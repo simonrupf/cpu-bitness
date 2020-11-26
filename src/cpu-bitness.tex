@@ -53,12 +53,16 @@
 \pagestyle{fancy} % All pages have headers and footers
 \fancyhead{} % Blank out the default header
 \fancyfoot{} % Blank out the default footer
-\fancyhead[C]{Running title $\bullet$ May 2016 $\bullet$ Vol. XXI, No. 1} % Custom header text
+\fancyhead[C]{CPU Bitness $\bullet$ August 2020} % Custom header text
 \fancyfoot[RO,LE]{\thepage} % Custom footer text
 
 \usepackage{titling} % Customizing the title section
 
 \usepackage{hyperref} % For hyperlinks in the PDF
+
+\usepackage{pdflscape} % landscape orientation
+\usepackage{afterpage} % allow moving sections to the next page
+\usepackage{array} % allows specifying table column widths
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
@@ -68,11 +72,10 @@
 
 \pretitle{\begin{center}\Huge\bfseries} % Article title formatting
 \posttitle{\end{center}} % Article title closing formatting
-\title{Article Title} % Article title
+\title{CPU Bitness} % Article title
 \author{%
-\textsc{John Smith}\thanks{A thank you or further information} \\[1ex] % Your name
-\normalsize University of California \\ % Your institution
-\normalsize \href{mailto:john@smith.com}{john@smith.com} % Your email address
+\textsc{Simon Rupf} \\[1ex] % Your name
+\normalsize \href{mailto:simon@rupf.net}{simon@rupf.net} % Your email address
 %\and % Uncomment if 2 authors are required, duplicate these 4 lines if more
 %\textsc{Jane Smith}\thanks{Corresponding author} \\[1ex] % Second author's name
 %\normalsize University of Utah \\ % Second author's institution
@@ -81,7 +84,13 @@
 \date{\today} % Leave empty to omit a date
 \renewcommand{\maketitlehookd}{%
 \begin{abstract}
-\noindent \blindtext % Dummy abstract text - replace \blindtext with your abstract text
+\noindent When discussing properties of a computers processing power, one particular
+property often used to classify a system is it's central processing unit's (CPU) bitness.
+A CPU is said to be, for example, of the 8-Bit type and therefore compared to other
+systems sporting CPUs of the same type. When looking at such a CPU more in-depth the
+situation is of course more complex. This article tries to collect those details over
+a broad range of CPUs, allowing for a more nuanced comparison of these CPUs. It also
+attempts to highlight the somewhat arbitrary nature of these CPU Bitness categorizations.
 \end{abstract}
 }
 
@@ -125,20 +134,36 @@ Text requiring further explanation\footnote{Example footnote}.
 
 \section{Results}
 
+\afterpage{
+\clearpage % Flush earlier floats (otherwise order might not be correct)
+\thispagestyle{empty} % empty page style (?)
+\begin{landscape} % Landscape page
 \begin{table}
-\caption{Example table}
-\centering
-\begin{tabular}{llr}
+\centering % Center table
+\begin{tabular}{lrrrrrm{2.5cm}m{6.5cm}}
 \toprule
-\multicolumn{2}{c}{Name} \\
-\cmidrule(r){1-2}
-First name & Last Name & Grade \\
-\midrule
-John & Doe & $7.5$ \\
-Richard & Miles & $2$ \\
+&&\multicolumn{4}{c}{Bitness} \\
+\cmidrule(r){3-6}
+CPU & Year & Instructions & Data & Address & Bus & Used in & Notes \\
+\toprule
+Intel 8080 & 197x & 8-24 bits & 8/16 bits & 16 bits & 8 bits & Altair 8800 &  \\
+\hline
+Intel 8088 & 197x & 8-48 bits & 8/16 bits & 16/20 bits & 20 bits & IBM PC & data is fetched 8 bits at a time from memory, but internally is stored in 16 bit registers \\
+\hline
+Intel 8086 & 197x & 8-48 bits & 16 bits & 16/20 bits & 20 bits & IBM PS/2 & access to addresses beyond 16 bits requires banking of segments \\
+\hline
+Zilog Z80 & 197x & 8-24 bits & 8/16 bits & 16 bits & 8 bits & Sinclair ZX Spectrum & designed to be binary compatible with Intel 8080 \\
+\hline
+MOS 6502 & 197x & 8-24 bits & 8 bits & 16 bits & 8 bits & Commodore 64 & unlicensed clone of the Motorola 6800 \\
+\hline
+Motorola 6800 & 197x & 8-24 bits & 8 bits & 16 bits & 8 bits &  & very rarely used \\
 \bottomrule
 \end{tabular}
 \end{table}
+\captionof{table}{CPU Bitness table} % Add 'table' caption
+\end{landscape}
+\clearpage % Flush page
+}
 
 \blindtext % Dummy text
 
