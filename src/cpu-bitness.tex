@@ -146,11 +146,13 @@ Text requiring further explanation\footnote{Example footnote}.
 \cmidrule(r){3-6}
 CPU & Year & Instructions & Data & Address & Bus & Used in & Notes \\
 \toprule
-Intel 8080 & 197x & 8-24 bits & 8/16 bits & 16 bits & 8 bits & Altair 8800 &  \\
+Intel 8008 & \cite{intelchips} 1972 & \cite[p.3]{intel8008} 8-22 bits & \cite[p.3]{intel8008} 8 bits & \cite[p.1]{intel8008} 14 bits & \cite[p.2]{intel8008} 8 bits & MCS-8, Mark-8 &  \\
 \hline
-Intel 8088 & 197x & 8-48 bits & 8/16 bits & 16/20 bits & 20 bits & IBM PC & data is fetched 8 bits at a time from memory, but internally is stored in 16 bit registers \\
+Intel 8080 & \cite{intelchips} 1974 & 8-24 bits & 8/16 bits & 16 bits & 8 bits & Altair 8800 &  \\
 \hline
-Intel 8086 & 197x & 8-48 bits & 16 bits & 16/20 bits & 20 bits & IBM PS/2 & access to addresses beyond 16 bits requires banking of segments \\
+Intel 8088 & 1978 & 8-48 bits & 8/16 bits & 16/20 bits & 20 bits & IBM PC & data is fetched 8 bits at a time from memory, but internally is stored in 16 bit registers \\
+\hline
+Intel 8086 & \cite{intelchips} 1978 & 8-48 bits & 16 bits & 16/20 bits & 20 bits & IBM PS/2 & access to addresses beyond 16 bits requires banking of segments \\
 \hline
 Zilog Z80 & 197x & 8-24 bits & 8/16 bits & 16 bits & 8 bits & Sinclair ZX Spectrum & designed to be binary compatible with Intel 8080 \\
 \hline
@@ -193,12 +195,14 @@ A statement requiring citation \cite{Figueredo:2009dg}.
 
 \begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
 
-\bibitem[Figueredo and Wolf, 2009]{Figueredo:2009dg}
-Figueredo, A.~J. and Wolf, P. S.~A. (2009).
-\newblock Assortative pairing and life history strategy - a cross-cultural
-  study.
-\newblock {\em Human Nature}, 20:317--330.
- 
+\bibitem{intelchips}
+\textit{Intel Chips timeline}.
+Intel Corporation, 2012.
+
+\bibitem{intel8008}
+\textit{Intel 8008/8008-1 EIGHT-BIT MICROPROCESSOR}.
+Intel Corporation, 1978.
+
 \end{thebibliography}
 
 %----------------------------------------------------------------------------------------

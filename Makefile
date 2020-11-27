@@ -1,8 +1,17 @@
 .PHONY: build clean help
 
-build: ## Build the PDF document (default).
-	mkdir -p .cache/Tectonic
-	docker run -ti --rm -v $(CURDIR)/src:/mnt -v $(CURDIR)/.cache/Tectonic:/root/.cache/Tectonic -w /mnt vinay0410/tectonic-image sh -c "tectonic cpu-bitness.tex && chown -R $(shell id -u):$(shell id -g) cpu-bitness.pdf /root/.cache/Tectonic"
+build: src/cpu-bitness.pdf ## Build the PDF document (default).
+
+src/cpu-bitness.pdf: src/cpu-bitness.tex src/.cache/Tectonic
+	docker run -ti --rm -v $(CURDIR)/src:/mnt -e HOME=/mnt -w /mnt -u $(shell id -u):$(shell id -g) vinay0410/tectonic-image tectonic cpu-bitness.tex
+
+src/.cache/Tectonic:
+	mkdir -p src/.cache/Tectonic
+
+ref: ref/Intel\ Chips\ timeline.pdf ## Create screen optimized PDFs of original reference material
+
+ref/Intel\ Chips\ timeline.pdf: ref/originals/Intel\ Chips\ timeline.pdf
+	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.6 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$@" "$<"
 
 clean: ## Removes the generated PDF and Tectonic cache.
 	rm -rf src/cpu-bitness.pdf .cache
