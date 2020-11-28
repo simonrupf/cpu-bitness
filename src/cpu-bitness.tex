@@ -142,23 +142,23 @@ Text requiring further explanation\footnote{Example footnote}.
 \centering % Center table
 \begin{tabular}{lrrrrrm{2.5cm}m{6.5cm}}
 \toprule
-&&\multicolumn{4}{c}{Bitness} \\
+&&\multicolumn{4}{c}{Width in Bits} \\
 \cmidrule(r){3-6}
 CPU & Year & Instructions & Data & Address & Bus & Used in & Notes \\
 \toprule
-Intel 8008 & \cite{intelchips} 1972 & \cite[p.3]{intel8008} 8-22 bits & \cite[p.3]{intel8008} 8 bits & \cite[p.1]{intel8008} 14 bits & \cite[p.2]{intel8008} 8 bits & MCS-8, Mark-8 &  \\
+Intel 8008 & \cite{intelchips} 1972 & \cite[p.3]{intel8008} 8/16/22 & \cite[p.3]{intel8008} 8 & \cite[p.1]{intel8008} 14 & \cite[p.2]{intel8008} 8 & MCS-8, Mark-8 & bi-directional bus \\
 \hline
-Intel 8080 & \cite{intelchips} 1974 & 8-24 bits & 8/16 bits & 16 bits & 8 bits & Altair 8800 &  \\
+Intel 8080 & \cite{intelchips} 1974 & \cite[p.8]{intel8080} 8/16/24 & \cite[p.1]{intel8080} 8 & \cite[p.1]{intel8080} 16 & \cite[p.2]{intel8080} 24 & Altair 8800 & separate address and data bus \\
 \hline
-Intel 8088 & 1978 & 8-48 bits & 8/16 bits & 16/20 bits & 20 bits & IBM PC & data is fetched 8 bits at a time from memory, but internally is stored in 16 bit registers \\
+Intel 8088 & 1978 & 8-48 & 8/16 & 16/20 & 20 & IBM PC & data is fetched 8 bits at a time, but internally stored in 16 bit registers \\
 \hline
-Intel 8086 & \cite{intelchips} 1978 & 8-48 bits & 16 bits & 16/20 bits & 20 bits & IBM PS/2 & access to addresses beyond 16 bits requires banking of segments \\
+Intel 8086 & \cite{intelchips} 1978 & 8-48 & 16 & 16/20 & 20 & IBM PS/2 & access to addresses beyond 16 bits requires banking of segments \\
 \hline
-Zilog Z80 & 197x & 8-24 bits & 8/16 bits & 16 bits & 8 bits & Sinclair ZX Spectrum & designed to be binary compatible with Intel 8080 \\
+Zilog Z80 & 197x & 8-24 & 8/16 & 16 & 8 & Sinclair ZX Spectrum & designed to be binary compatible with Intel 8080 \\
 \hline
-MOS 6502 & 197x & 8-24 bits & 8 bits & 16 bits & 8 bits & Commodore 64 & unlicensed clone of the Motorola 6800 \\
+MOS 6502 & 197x & 8-24 & 8 & 16 & 8 & Commodore 64 & unlicensed clone of the Motorola 6800 \\
 \hline
-Motorola 6800 & 197x & 8-24 bits & 8 bits & 16 bits & 8 bits &  & very rarely used \\
+Motorola 6800 & 197x & 8-24 & 8 & 16 & 8 &  & very rarely used \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -202,6 +202,14 @@ Intel Corporation, 2012.
 \bibitem{intel8008}
 \textit{Intel 8008/8008-1 EIGHT-BIT MICROPROCESSOR}.
 Intel Corporation, 1978.
+
+\bibitem{intel8080}
+\textit{Intel 8080A/8080A-1/8080A-2 8-BIT N-CHANNEL MICROPROCESSOR}.
+Intel Corporation, 1986.
+
+\bibitem{intel8080users}
+\textit{Intel Intel 8080 Microcomputer Systems Users's Manual}, CHAPTER 2 THE 8080 CENTRAL PROCESSOR UNIT, p.15-34.
+Intel Corporation, September 1975.
 
 \end{thebibliography}
 
