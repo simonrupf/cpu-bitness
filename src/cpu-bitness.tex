@@ -146,13 +146,15 @@ Text requiring further explanation\footnote{Example footnote}.
 \cmidrule(r){3-6}
 CPU & Year & Instructions & Data & Address & Bus & Used in & Notes \\
 \toprule
-Intel 8008 & \cite{intelchips} 1972 & \cite[p.3]{intel8008} 8/16/22 & \cite[p.3]{intel8008} 8 & \cite[p.1]{intel8008} 14 & \cite[p.2]{intel8008} 8 & MCS-8, Mark-8 & bi-directional bus \\
+Intel 4004 & \cite{intelquick} 1971 &  &  &  &  &  &  \\
 \hline
-Intel 8080 & \cite{intelchips} 1974 & \cite[p.8]{intel8080} 8/16/24 & \cite[p.1]{intel8080} 8 & \cite[p.1]{intel8080} 16 & \cite[p.2]{intel8080} 24 & Altair 8800 & separate address and data bus \\
+Intel 8008 & \cite{intelquick} 1972 & \cite[p.3]{intel8008} 8/16/22 & \cite[p.3]{intel8008} 8 & \cite[p.1]{intel8008} 14 & \cite[p.2]{intel8008} 8 & MCS-8, Mark-8 & bi-directional bus \\
 \hline
-Intel 8088 & 1978 & 8-48 & 8/16 & 16/20 & 20 & IBM PC & data is fetched 8 bits at a time, but internally stored in 16 bit registers \\
+Intel 8080 & \cite{intelquick} 1974 & \cite[p.8]{intel8080} 8/16/24 & \cite[p.1]{intel8080} 8 & \cite[p.1]{intel8080} 16 & \cite[p.2]{intel8080} 24 & Altair 8800 & separate address and data bus \\
 \hline
-Intel 8086 & \cite{intelchips} 1978 & 8-48 & 16 & 16/20 & 20 & IBM PS/2 & access to addresses beyond 16 bits requires banking of segments \\
+Intel 8086 & \cite{intelquick} 1978 & 8-48 & 16 & 16/20 & 20 & IBM PS/2 & access to addresses beyond 16 bits requires banking of segments \\
+\hline
+Intel 8088 & \cite{intelquick} 1979 & \cite[p.26]{intel8088} 8/16/24/32 & \cite[p.1]{intel8088} 8/16 & \cite[p.1]{intel8088} 24 & \cite[p.1]{intel8088} 8/24 & IBM PC & data is fetched 8 bits at a time, but internally stored in 16 bit registers, bus: lowest 8 bits are bi-directional for data transfer, highest 4 bits are used for status signals and segment selection \\
 \hline
 Zilog Z80 & 197x & 8-24 & 8/16 & 16 & 8 & Sinclair ZX Spectrum & designed to be binary compatible with Intel 8080 \\
 \hline
@@ -195,6 +197,11 @@ A statement requiring citation \cite{Figueredo:2009dg}.
 
 \begin{thebibliography}{99} % Bibliography - this is intentionally simple in this template
 
+\bibitem{intelquick}
+\textit{Intel Microprocessor Quick Reference Guide - Year}.
+Intel Corporation, last modified: Tue, 12 Feb 2013 23:56:59 GMT.
+\href{https://www.intel.com/pressroom/kits/quickrefyr.htm}{intel.com/pressroom/kits/quickrefyr.htm}
+
 \bibitem{intelchips}
 \textit{Intel Chips timeline}.
 Intel Corporation, 2012.
@@ -210,6 +217,10 @@ Intel Corporation, 1986.
 \bibitem{intel8080users}
 \textit{Intel Intel 8080 Microcomputer Systems Users's Manual}, CHAPTER 2 THE 8080 CENTRAL PROCESSOR UNIT, p.15-34.
 Intel Corporation, September 1975.
+
+\bibitem{intel8088}
+\textit{Intel 8088 8-BIT HMOS MICROPROCESSOR 8088/8088-2}.
+Intel Corporation, August 1990.
 
 \end{thebibliography}
 
