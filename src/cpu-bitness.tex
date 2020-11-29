@@ -59,6 +59,15 @@
 
 \usepackage{hyperref} % For hyperlinks in the PDF
 
+\usepackage{tablefootnote} % For using footnotes in tables
+\makeatletter
+\newcommand{\spewfootnotes}{%
+\tfn@tablefootnoteprintout%
+\global\let\tfn@tablefootnoteprintout\relax%
+\gdef\tfn@fnt{0}%
+}
+\makeatother
+
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
 %----------------------------------------------------------------------------------------
@@ -129,19 +138,29 @@ CPU & Year & Instructions & Data & Address & Bus & Used in \\
 \toprule
 Intel 4004 & 1971 \cite{intelquick} &  &  &  &  &  \\
 \hline
-Intel 8008\footnotemark[1] \cite{intel8008} & 1972 \cite{intelquick} & 8/16/22 & 8 & 14 & 8 & MCS-8, Mark-8 \\
+Intel 8008\tablefootnote{bus is used bi-directional for both address selection and data
+transfers} \cite{intel8008} & 1972 \cite{intelquick} & 8/16/22 & 8 & 14 & 8 & MCS-8, Mark-8 \\
 \hline
-Intel 8080\footnotemark[2] \cite{intel8080} & 1974 \cite{intelquick} & 8/16/24 & 8 & 16 & 24 & MITS Altair 8800 \\
+Intel 8080\tablefootnote{separate address and data bus} \cite{intel8080} & 1974 \cite{intelquick} & 8/16/24 & 8 & 16 & 24 & MITS Altair 8800 \\
 \hline
-Intel 8085 & 1976 \cite{intelquick} & 8/16 & 8 & 16 & 16 & TRS-80 Model 100 \\
+Intel 8085\tablefootnote{lower 8 bits are used bi-directionally for data transfer, same
+instruction set as the 8080} \cite{intel8085} & 1976 \cite{intelquick} & 8/16/24 & 8 & 16 & 16 & TRS-80 Model 100 \\
 \hline
-Intel 8086\footnotemark[3] \cite{intel8086} & 1978 \cite{intelquick} & 8/16/24/32 & 8/16 & 20 & 20 & Compaq Deskpro \\
+Intel 8086\tablefootnote{lower 16 bits are used bi-directionally for data transfer,
+highest 4 bits are used for signals and segment selection} \cite{intel8086} & 1978 \cite{intelquick} & 8/16/24/32 & 8/16 & 20 & 20 & Compaq Deskpro \\
 \hline
-Intel 8088\footnotemark[4] \footnotemark[5] \cite{intel8088} & 1979 \cite{intelquick} & 8/16/24/32 & 8/16 & 20 & 20 & IBM PC 5150 \\
+Intel 8088\tablefootnote{data is fetched 8 bits at a time, but internally stored in 16
+bit registers, lowest 8 bits are used bi-directionally for data transfer, highest 4
+bits are used for signals and segment selection} \cite{intel8088} & 1979 \cite{intelquick} & 8/16/24/32 & 8/16 & 20 & 20 & IBM PC 5150 \\
 \hline
-Zilog Z80\footnotemark[6] & 197x & 8-24 & 8/16 & 16 & 8 & Sinclair ZX Spectrum \\
+Zilog Z80\tablefootnote{designed to be binary compatible with Intel 8080, but supporting
+additional instructions} & 197x & 8-24 & 8/16 & 16 & 8 & Sinclair ZX Spectrum \\
 \hline
-MOS 6502\footnotemark[7] & 197x & 8-24 & 8 & 16 & 8 & Commodore 64 \\
+MOS 6502\tablefootnote{designed to be an improved and low-cost evolution of the Motorola 6800 -
+MOS 6501 is even pin compatible, but both, 6501 \& 6502, use an instruction set that is
+incompatible to the 6800} & 197x & 8-24 & 8 & 16 & 8 & Apple II \\
+\hline
+MOS 6510 & 197x & 8-24 & 8 & 16 & 8 & Commodore 64 \\
 \hline
 Motorola 6800 & 197x & 8-24 & 8 & 16 & 8 & Sphere \\
 \hline
@@ -151,21 +170,7 @@ Motorola 6809 & 197x & 8-24 & 8 & 16 & 8 & TRS-80 Color Computer \\
 \caption{CPU Bitness table} % Add 'table' caption
 \label{tab:bitness}
 \end{table*}
-
-\footnotetext[1]{bus is used bi-directional for both address selection and data
-transfers}
-\footnotetext[2]{separate address and data bus}
-\footnotetext[3]{lower 16 bits are used bi-directionally for data transfer, highest 4
-bits are used for signals and segment selection}
-\footnotetext[4]{data is fetched 8 bits at a time, but internally stored in 16 bit
-registers}
-\footnotetext[5]{lowest 8 bits are used bi-directionally for data transfer, highest 4
-bits are used for signals and segment selection}
-\footnotetext[6]{designed to be binary compatible with Intel 8080, but with additional
-instructions}
-\footnotetext[7]{designed to be an improved and low-cost evolution of the Motorola 6800 -
-MOS 6501 is even pin compatible, but both, 6501 \& 6502, use an instruction set that is
-incompatible to the 6800}
+\spewfootnotes
 
 %------------------------------------------------
 
@@ -242,9 +247,14 @@ Data \& Address: Page 1, Bus: Page 2, Instructions: Page 8.
 Intel Corporation, 1986.
 
 \bibitem{intel8080users}
-\textit{Intel Intel 8080 Microcomputer Systems Users's Manual}, CHAPTER 2 THE 8080 CENTRAL PROCESSOR UNIT, p.15-34.
-Address: Page 1, Bus: Page 2, Instructions \& Data: Page 3.
+\textit{Intel Intel 8080 Microcomputer Systems Users's Manual}.
+CHAPTER 2 THE 8080 CENTRAL PROCESSOR UNIT, p.15-34.
 Intel Corporation, September 1975.
+
+\bibitem{intel8085}
+\textit{Intel 8085AH/8085AH-2/8085AH-1 8-BIT HMOS MICROPROCESSOR}.
+Data: Page 1, Address \& Bus: Page 2, Instructions: Page 18.
+Intel Corporation, September 1987.
 
 \bibitem{intel8086}
 \textit{Intel 8086 16-BIT HMOS MICROPROCESSOR 8086/8086-2/8086-1}.

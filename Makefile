@@ -8,10 +8,13 @@ src/cpu-bitness.pdf: src/cpu-bitness.tex src/.cache/Tectonic
 src/.cache/Tectonic:
 	mkdir -p src/.cache/Tectonic
 
-ref: ref/Intel\ Chips\ timeline.pdf ## Create screen optimized PDFs of original reference material
+ref: ref/Intel\ Chips\ timeline.pdf ref/Intel\ 8085.pdf ## Create screen optimized PDFs of original reference material
 
 ref/Intel\ Chips\ timeline.pdf: ref/originals/Intel\ Chips\ timeline.pdf
 	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.6 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$@" "$<"
+
+ref/Intel\ 8085.pdf: ref/originals/Intel\ 8085.pdf
+	gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.3 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile="$@" "$<"
 
 clean: ## Removes the generated PDF and Tectonic cache.
 	rm -rf src/cpu-bitness.pdf .cache
