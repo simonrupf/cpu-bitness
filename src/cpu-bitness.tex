@@ -124,9 +124,51 @@ some revisions of this chip are still produced by the same company at the time t
 article is written. This design has been in production since 1976 and a lot of material
 has been published for it over the years.
 
+After comparing several CPU models, the following properties were selected for comparison:
+
+\begin{itemize}
+\item Instruction width
+\item Data width
+\item Address width
+\item Bus width
+\end{itemize}
+
+\subsection{Instruction width}
+
+As described first by John Von Neumann \cite{edvac}, instructions and data for the CPU
+can both be stored in a single storage. In order to address both using the same
+mechanism, these need be stored in same increments. The instruction width as presented
+in this article records the different lengths possible for an instruction, which can
+consist of an instruction code and optionally addtional parameters representing data to
+operate on and/or an address to a memory location.
+
+\subsection{Data width}
+
+In order to handle different types of data efficiently, CPUs may offer instructions that
+manipulate these directly. Some data types might require more bits then fit in a single
+address. For these, the CPU will need to handle a multiple of the smallest data width,
+which is called a word.
+
+\subsection{Address width}
+
+In order for the CPU to address every word of data in it's memory they all need to be
+addressable. The address width limits the maximum amount of memory that can be accessed.
+Some CPUs implement banking or segmentation of memory in order to switch between
+different parts of memory that would otherwise be outside of the address range. In such
+cases, the width of the address and the additional bits of the bank or segment are
+summed up.
+
+\subsection{Bus width}
+
+A CPU can have one or multiple buses to transmit and receive addresses, data and signals
+with the rest of the system. For the purpose of this article only the number of lanes for
+data and addresses were considered.
+
 %------------------------------------------------
 
 \section{Results}
+
+To avoid repetition, the references on the years of introduction of the CPUs got collected in Table \ref{tab:introduction}. The main Table \ref{tab:bitness} collects information on the bit width of key aspects of the CPUs.
 
 \begin{table*}[h]
 \centering % Center table
@@ -136,25 +178,32 @@ has been published for it over the years.
 \cmidrule(r){3-6}
 CPU & Year & Instructions & Data & Address & Bus & Used in \\
 \toprule
-Intel 4004 & 1971 \cite{intelquick} &  &  &  &  &  \\
+AGC\tablefootnote{CPU isn't implemented as an integrated circuit, it uses words of 15
+bits with a 1 bit parity, instructions are one word, when the instruction EXTEND is
+used, the next instruction is decoded using a different code set, hence these extended
+instructions are 2 words long instead of one, the only double precision fractional
+numbers are supported as 2 word data type, all other data are 1 word, erasable memory
+addresses need 8 bits, fixed memory addresses require 16} \cite{agc} & 1961 & 15/30 & 15/30 & 8/16 & N/A & Apollo Spacecraft \\
+\hline
+Intel 4004 & 1971 &  &  &  &  &  \\
 \hline
 Intel 8008\tablefootnote{bus is used bi-directional for both address selection and data
-transfers} \cite{intel8008} & 1972 \cite{intelquick} & 8/16/22 & 8 & 14 & 8 & MCS-8, Mark-8 \\
+transfers} \cite{intel8008} & 1972 & 8/16/22 & 8 & 14 & 8 & MCS-8, Mark-8 \\
 \hline
-Intel 8080\tablefootnote{separate address and data bus} \cite{intel8080} & 1974 \cite{intelquick} & 8/16/24 & 8 & 16 & 24 & MITS Altair 8800 \\
+Intel 8080\tablefootnote{separate address and data bus} \cite{intel8080} & 1974 & 8/16/24 & 8 & 16 & 24 & MITS Altair 8800 \\
 \hline
 Intel 8085\tablefootnote{lower 8 bits are used bi-directionally for data transfer, same
-instruction set as the 8080} \cite{intel8085} & 1976 \cite{intelquick} & 8/16/24 & 8 & 16 & 16 & TRS-80 Model 100 \\
+instruction set as the 8080} \cite{intel8085} & 1976 & 8/16/24 & 8 & 16 & 16 & TRS-80 Model 100 \\
 \hline
 Intel 8086\tablefootnote{lower 16 bits are used bi-directionally for data transfer,
-highest 4 bits are used for signals and segment selection} \cite{intel8086} & 1978 \cite{intelquick} & 8/16/24/32 & 8/16 & 20 & 20 & Compaq Deskpro \\
+highest 4 bits are used for signals and segment selection} \cite{intel8086} & 1978 & 8/16/24/32 & 8/16 & 20 & 20 & Compaq Deskpro \\
 \hline
 Intel 8088\tablefootnote{data is fetched 8 bits at a time, but internally stored in 16
 bit registers, lowest 8 bits are used bi-directionally for data transfer, highest 4
-bits are used for signals and segment selection} \cite{intel8088} & 1979 \cite{intelquick} & 8/16/24/32 & 8/16 & 20 & 20 & IBM PC 5150 \\
+bits are used for signals and segment selection} \cite{intel8088} & 1979 & 8/16/24/32 & 8/16 & 20 & 20 & IBM PC 5150 \\
 \hline
 Zilog Z80\tablefootnote{designed to be binary compatible with the Intel 8080, but
-offering additional instructions} \cite{z8400} & 1976 \cite{z80dev} & 8/16/24/32 & 8/16 & 16 & 24 & Sinclair ZX Spectrum \\
+offering additional instructions} \cite{z8400} & 1976 & 8/16/24/32 & 8/16 & 16 & 24 & Sinclair ZX Spectrum \\
 \hline
 MOS 6502\tablefootnote{designed to be an improved and low-cost evolution of the Motorola 6800 -
 MOS 6501 is even pin compatible, but both, 6501 \& 6502, use an instruction set that is
@@ -167,10 +216,27 @@ Motorola 6800 & 197x & 8-24 & 8 & 16 & 8 & Sphere \\
 Motorola 6809 & 197x & 8-24 & 8 & 16 & 8 & TRS-80 Color Computer \\
 \bottomrule
 \end{tabular}
-\caption{CPU Bitness table} % Add 'table' caption
+\caption{CPU Bitness}
 \label{tab:bitness}
 \end{table*}
 \spewfootnotes
+
+\begin{table}
+\centering % Center table
+\begin{tabular}{ll}
+\toprule
+Vendor & Reference \\
+\toprule
+AGC & \cite{agc} \\
+\hline
+Intel & \cite{intelquick} \\
+\hline
+Zilog & \cite{z80dev} \\
+\bottomrule
+\end{tabular}
+\caption{Introduction year reference}
+\label{tab:introduction}
+\end{table}
 
 %------------------------------------------------
 
@@ -183,7 +249,7 @@ multiple of the data width and 2) none of the listed CPUs use an address width m
 their data width. These observations can be explained as follows:
 
 \begin{enumerate}[1)]
-\item Instructions will be at least as long as the data, as per the Von Neumann
+\item Instructions will be at least as long as the data, as per the Von Neumann \cite{edvac}
 architecture. But they might act on a piece of data or an address.
 \item For the majority of CPU designs, the amount of available memory exceeds what could
 be addressed within the width of the data. For example, a CPU operating on 8-bit data
@@ -239,6 +305,17 @@ MICROPROCESSOR"\cite{intel8086}. Still, the IBM PC 5150 is usually categorized a
 %----------------------------------------------------------------------------------------
 
 \begin{thebibliography}{99} % Bibliography
+
+\bibitem{edvac}
+\textit{The First Draft Report on the EDVAC}.
+Memory that stores data and instructions: Page 42, Section 15.6.
+John Von Neumann, June 1945.
+
+\bibitem{agc}
+\textit{The Apollo Guidance Computer}.
+Data: Pages 20 \& 27, Address: Pages 42-43, Instructions: Pages 71-73.
+Frank O'Brien; Praxis Publishing Limited, 2010.
+ISBN 978-1-4419-0876-6
 
 \bibitem{intelquick}
 \textit{Intel Microprocessor Quick Reference Guide - Year}.
