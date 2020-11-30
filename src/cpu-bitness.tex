@@ -113,16 +113,16 @@ attempts to highlight the somewhat arbitrary nature of these CPU Bitness categor
 
 \section{Methods}
 
-Maecenas sed ultricies felis. Sed imperdiet dictum arcu a egestas. 
-\begin{itemize}
-\item Donec dolor arcu, rutrum id molestie in, viverra sed diam
-\item Curabitur feugiat
-\item turpis sed auctor facilisis
-\item arcu eros accumsan lorem, at posuere mi diam sit amet tortor
-\item Fusce fermentum, mi sit amet euismod rutrum
-\item sem lorem molestie diam, iaculis aliquet sapien tortor non nisi
-\item Pellentesque bibendum pretium aliquet
-\end{itemize}
+As mutch as possible, the bit widths were looked up in datasheets or product
+specifications, as they present the CPUs features in a compact manner. As some CPUs have
+been manufactored over long periods of time and later revisions feature improved designs,
+this article tries to source the numbers from sheets published as early as possible in
+the products life cycle.
+
+Sourcing early information on the Zilog Z80 CPU prooved to be a particular challenge, as
+some revisions of this chip are still produced by the same company at the time this
+article is written. This design has been in production since 1976 and a lot of material
+has been published for it over the years.
 
 %------------------------------------------------
 
@@ -153,8 +153,8 @@ Intel 8088\tablefootnote{data is fetched 8 bits at a time, but internally stored
 bit registers, lowest 8 bits are used bi-directionally for data transfer, highest 4
 bits are used for signals and segment selection} \cite{intel8088} & 1979 \cite{intelquick} & 8/16/24/32 & 8/16 & 20 & 20 & IBM PC 5150 \\
 \hline
-Zilog Z80\tablefootnote{designed to be binary compatible with Intel 8080, but supporting
-additional instructions} & 197x & 8-24 & 8/16 & 16 & 8 & Sinclair ZX Spectrum \\
+Zilog Z80\tablefootnote{designed to be binary compatible with the Intel 8080, but
+offering additional instructions} \cite{z8400} & 1976 \cite{z80dev} & 8/16/24/32 & 8/16 & 16 & 24 & Sinclair ZX Spectrum \\
 \hline
 MOS 6502\tablefootnote{designed to be an improved and low-cost evolution of the Motorola 6800 -
 MOS 6501 is even pin compatible, but both, 6501 \& 6502, use an instruction set that is
@@ -191,6 +191,19 @@ will want to address more then $2^8 = 256$ addresses.
 \end{enumerate}
 
 The secions below detail some CPU models that took particularly noteworthy trade-offs.
+
+\subsection{Intel 8080 \& it's Evolutions}
+
+We do already find a small number instructions that operate on 16 bits in the Intel 8080.
+Later chip designs used only a single 5 Volt power source, instead of the 8080's 5 Volts,
+12 Volts and negative 5 Volts, and they also evolved the available instruction set. The
+Intel 8085 added two I/O related instructions and the Zilog Z80 adds a number of new
+instructions, including two additional 16 bit arithmetic operations. None of these designs
+support multiplication in their instruction set. \cite{softwaresolutions}
+
+While these CPUs already support some instructions that operate on 16 bits of data, they
+are not regarded to be 16 bit designs, because their both their data bus and
+instruction set are clearly centered around 8 bits of data.
 
 \subsection{Intel 8086 \& 8088}
 
@@ -265,6 +278,22 @@ Intel Corporation, September 1990.
 \textit{Intel 8088 8-BIT HMOS MICROPROCESSOR 8088/8088-2}.
 Data: Page 1, Address \& Bus: Page 2, Instructions: Page 26.
 Intel Corporation, August 1990.
+
+\bibitem{z8400}
+\textit{Zilog Product Specification Z8400/Z84C00 NMOS/CMOS Z80\textsuperscript{\textregistered} CPU Central Processing Unit}.
+Data, Address \& Bus: Page 1, Instructions: Page 5.
+Zilog Incorporated, ca. 1990.
+
+\bibitem{z80dev}
+\textit{Zilog Z80 Development System Product Specification}.
+Zilog Incorporated, 1976.
+
+\bibitem{softwaresolutions}
+\textit{Software Solutions for Engineers And Scientists}.
+Page 65: "The 8-bit microprocessors that preceded the 80x86 family (such as the Intel 8080, the Zilog Z80, and the Motorola) did not include multiplication."
+Sanchez, Julio; Canton, Maria P.; Taylor \& Francis, 2008.
+ISBN 978-1-4200-4302-0
+
 
 \end{thebibliography}
 
