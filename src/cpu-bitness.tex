@@ -191,8 +191,13 @@ transfers} \cite{intel8008} & 1972 & 8/16/22 & 8 & 14 & 8 & MCS-8, Mark-8 \\
 \hline
 Intel 8080\tablefootnote{separate address and data bus} \cite{intel8080} & 1974 & 8/16/24 & 8 & 16 & 24 & MITS Altair 8800 \\
 \hline
+Motorola 6800 \cite{mc6800} & 1974 & 8/16/24 & 8 & 16 & 24 & Sphere \\
+\hline
 Intel 8085\tablefootnote{lower 8 bits are used bi-directionally for data transfer, same
 instruction set as the 8080} \cite{intel8085} & 1976 & 8/16/24 & 8 & 16 & 16 & TRS-80 Model 100 \\
+\hline
+Zilog Z80\tablefootnote{designed to be binary compatible with the Intel 8080, but
+offering additional instructions} \cite{z8400} & 1976 & 8/16/24/32 & 8/16 & 16 & 24 & Sinclair ZX80 \\
 \hline
 Intel 8086\tablefootnote{lower 16 bits are used bi-directionally for data transfer,
 highest 4 bits are used for signals and segment selection} \cite{intel8086} & 1978 & 8/16/24/32 & 8/16 & 20 & 20 & Compaq Deskpro \\
@@ -201,18 +206,13 @@ Intel 8088\tablefootnote{data is fetched 8 bits at a time, but internally stored
 bit registers, lowest 8 bits are used bi-directionally for data transfer, highest 4
 bits are used for signals and segment selection} \cite{intel8088} & 1979 & 8/16/24/32 & 8/16 & 20 & 20 & IBM PC 5150 \\
 \hline
-Zilog Z80\tablefootnote{designed to be binary compatible with the Intel 8080, but
-offering additional instructions} \cite{z8400} & 1976 & 8/16/24/32 & 8/16 & 16 & 24 & Sinclair ZX Spectrum \\
+Motorola 6809 \cite{mc6809} & 1979 & 8/16/24/32 & 8/16 & 16 & 24 & TRS-80 Color Computer \\
 \hline
 MOS 6502\tablefootnote{designed to be an improved and low-cost evolution of the Motorola 6800 -
 MOS 6501 is even pin compatible, but both, 6501 \& 6502, use an instruction set that is
 incompatible to the 6800} & 197x & 8-24 & 8 & 16 & 8 & Apple II \\
 \hline
 MOS 6510 & 197x & 8-24 & 8 & 16 & 8 & Commodore 64 \\
-\hline
-Motorola 6800 & 197x & 8-24 & 8 & 16 & 8 & Sphere \\
-\hline
-Motorola 6809 & 197x & 8-24 & 8 & 16 & 8 & TRS-80 Color Computer \\
 \end{tabular}
 \caption{CPU Bitness}
 \label{tab:bitness}
@@ -227,6 +227,8 @@ Vendor & Reference \\
 AGC & \cite{agc} \\
 \hline
 Intel & \cite{intelquick} \\
+\hline
+Motorola & \cite{motorolamanual} \\
 \hline
 Zilog & \cite{z80dev} \\
 \end{tabular}
@@ -286,11 +288,10 @@ select the active chip to read from or write to.
 Hence it trades clock cycles for reduced bus complexity and therefore cheaper circuit
 board manufactoring.
 
-The first IBM Personal Computer, model 5150, choose the Intel 8088 rather then the 8086.
-
 On the topic of "CPU Bitness", note that the title in the 8088 datasheet calls it an
 "8-BIT HMOS MICROPROCESSOR"\cite{intel8088}, while the 8086 is titled a "16-BIT HMOS
-MICROPROCESSOR"\cite{intel8086}. Still, the IBM PC 5150 is usually categorized as 16 bit.
+MICROPROCESSOR"\cite{intel8086}. The first IBM Personal Computer, model 5150, choose
+the Intel 8088 rather then the 8086, but is usually categorized as 16 bit.
 
 \subsection{Motorola 6800 \& MOS 6501/6502}
 
@@ -351,6 +352,21 @@ Intel Corporation, September 1990.
 \textit{Intel 8088 8-BIT HMOS MICROPROCESSOR 8088/8088-2}.
 Data: Page 1, Address \& Bus: Page 2, Instructions: Page 26.
 Intel Corporation, August 1990.
+
+\bibitem{mc6800}
+\textit{MC6800 MOS MICROPROCESSOR}.
+Data, Address \& Bus: Page 1, Instructions: Page 13.
+Motorola Incorporated, 1984.
+
+\bibitem{mc6809}
+\textit{MC6809 HMOS 8-BIT MICROPROCESSING UNIT}.
+Data, Address \& Bus: Page 1, Instructions: Page 29.
+Motorola Incorporated, 1983.
+
+\bibitem{motorolamanual}
+\textit{MOTOROLA MICROPROCESSORS DATA MANUAL}.
+FIGURE 1-1: Page 13.
+Motorola Incorporated, 1981.
 
 \bibitem{z8400}
 \textit{Zilog Product Specification Z8400/Z84C00 NMOS/CMOS Z80\textsuperscript{\textregistered} CPU Central Processing Unit}.
