@@ -240,21 +240,62 @@ Zilog & \cite{z80dev} \\
 
 \section{Noteworthy Cases}
 
-One could assume that an ideal CPU design would use the same amount of bits for address
-space as for the it's data in order to simplify the design as much as possible. Reviewing
-Table \ref{tab:bitness}, two things should be noted: 1) the instruction width is a
+One might assume that an ideal CPU design would use the same amount of bits for address
+space as for it's data, in order to simplify the design as much as possible. Reviewing
+Table \ref{tab:bitness}, two points should stand out: 1) the instruction width is a
 multiple of the data width and 2) none of the listed CPUs use an address width matching
 their data width. These observations can be explained as follows:
 
 \begin{enumerate}[1)]
-\item Instructions will be at least as long as the data, as per the Von Neumann \cite{edvac}
-architecture. But they might act on a piece of data or an address.
+\item Instructions will be at least as long as the data, as per the Von Neumann
+architecture \cite{edvac}. But they might act on a piece of data or an address.
 \item For the majority of CPU designs, the amount of available memory exceeds what could
 be addressed within the width of the data. For example, a CPU operating on 8-bit data
 will want to address more then $2^8 = 256$ addresses.
 \end{enumerate}
 
 The secions below detail some CPU models that took particularly noteworthy trade-offs.
+
+\subsection{Apollo Guidance Computer}
+
+The information on this device is based on secondary literature \cite{agc}. This system
+predates the availability of integrated circuits (IC) and so it's central processing unit
+got implemented using discrete electronic components. This makes it difficult to discern
+a data or address bus easily, although it does clearly separate two types of memory,
+erasable core memory and fixed core rope storage. Both get addressed independently and
+use different banking and address widths. The erasable memory servers both for what would
+now be IC-internal CPU registers, as well as for storing data or in flight updated
+programs. The two types of storage are not mapped into a single address space and
+different instruction are used to access data or instructions in each. Instructions can
+directly be executed from both types of storage and special instractions are used to
+transfer control between the two. Both types of storage can hold data and instructions,
+so it is still a Von Neumann architecture \cite{edvac}, even though the system doesn't
+make use of a unified address space as many later designs do, were RAM and ROM get mapped
+into a single address space, making transfer between the two seamless.
+
+It is debatable if this system can be classified as 15 or 16 bit system. Data can only be
+stored as 15 bits, or 30 bits, in the case of double precision fractionals. The 16th bit
+of each word serves as parity and in a few cases as an overflow flag, but in most cases
+can't be accessed by the software - the overflow handling requires extra operations and
+so that bit can be indirectly accessed. It is therefore also difficult give an amount of
+data storage in bits, since the amount of data storage capacity that is accessible by the
+software differs from the physical amount of bits needed to represent it. And 8 bit bytes
+are clearly incorrect or at least misleading to represent both bit widths. To avoid
+confusion the term word is used when referring to a 15 bit piece of data. Considering
+that modern ECC memory modules do not include memory used for parity information in their
+capacity listings, this article choses to list this device as a 15 bit architecture.
+
+It is noteworthy that while the data widths are larger then subsequent integrated circuit
+CPU designs, the address width for both memory types is smaller then the data width.
+Storing addresses as data in memory is therefore rather wasteful. This is mitigated by
+the structure of the instructions, of which there are two types: Those consisting of 3
+bits of Opcode, followed by 2 bits of Quarter code, leaving 10 bits for the storage
+address. Since the system uses banking to access both types of storage, this is
+sufficient to store the address within the currently selected bank for both types of
+memory. One of these instructions is the EXTEND instruction. When it is given, the
+following word contains an instruction that gets decoded using a different instruction
+set. This three staged design illustrates how the instruction architecture had evolved
+over time.
 
 \subsection{Intel 8080 \& it's Evolutions}
 
