@@ -212,12 +212,13 @@ bits are used for signals and segment selection} \cite{intel8088} & 1979 & 8/16/
 \hline
 Motorola 6809 \cite{mc6809} & 1979 & 8/16/24/32 & 8/16 & 16 & 24 & TRS-80 Color Computer \\
 \hline
+MOS 6510\tablefootnote{differs in pin out to the MOS 6502, adding 8 lanes for general
+purpose I/O to the bus, only used in the Commodore 64 which got introduced in 1982} \cite{mos6510} & 1982 & 8/16/24 & 8 & 16 & 32 & Commodore 64 \\
+\hline
 Hitachi 64180\tablefootnote{designed to be binary compatible with the Zilog Z80, offers
 12 additional instructions, among them multiplication, option to address 512 KiB (19
 address lines) or 1 MiB (20 address lines) of memory, got licensed to Zilog which brands
 it Z180} \cite{hd64180} & 1985 & 8/16/24/32 & 8/16 & 20 & 28 & Victor HC-90 \\
-\hline
-MOS 6510 & 197x & 8-24 & 8 & 16 & 8 & Commodore 64 \\
 \end{tabular}
 \caption{CPU Bitness}
 \label{tab:bitness}
@@ -417,6 +418,11 @@ Intel Corporation, August 1990.
 \textit{MCS6500 MICROPROCESSORS}.
 Data \& Address: Page 1, Instructions: Page 6, Bus: Page 9.
 MOS Technology Incorporated, May 1976.
+
+\bibitem{mos6510}
+\textit{6510 MICROPROCESSOR WITH I/O}.
+Data, Address \& Bus: Page 1, Instructions: Page 9.
+Commodore Semiconductor Group, ca. 1982-1985.
 
 \bibitem{mc6800}
 \textit{MC6800 MOS MICROPROCESSOR}.
