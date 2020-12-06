@@ -193,6 +193,10 @@ Intel 8080\tablefootnote{separate address and data bus} \cite{intel8080} & 1974 
 \hline
 Motorola 6800 \cite{mc6800} & 1974 & 8/16/24 & 8 & 16 & 24 & Sphere \\
 \hline
+MOS 6502\tablefootnote{designed to be an improved and low-cost evolution on the Motorola
+6800, MOS 6501 was even pin compatible, but the instruction set that is incompatible to
+the 6800} \cite{mos6500} & 1975 & 8/16/24 & 8 & 16 & 24 & Apple II \\
+\hline
 Intel 8085\tablefootnote{lower 8 bits are used bi-directionally for data transfer, same
 instruction set as the 8080} \cite{intel8085} & 1976 & 8/16/24 & 8 & 16 & 16 & TRS-80 Model 100 \\
 \hline
@@ -213,10 +217,6 @@ Hitachi 64180\tablefootnote{designed to be binary compatible with the Zilog Z80,
 address lines) or 1 MiB (20 address lines) of memory, got licensed to Zilog which brands
 it Z180} \cite{hd64180} & 1985 & 8/16/24/32 & 8/16 & 20 & 28 & Victor HC-90 \\
 \hline
-MOS 6502\tablefootnote{designed to be an improved and low-cost evolution of the Motorola 6800 -
-MOS 6501 is even pin compatible, but both, 6501 \& 6502, use an instruction set that is
-incompatible to the 6800} & 197x & 8-24 & 8 & 16 & 8 & Apple II \\
-\hline
 MOS 6510 & 197x & 8-24 & 8 & 16 & 8 & Commodore 64 \\
 \end{tabular}
 \caption{CPU Bitness}
@@ -234,6 +234,8 @@ AGC & \cite{agc} \\
 Hitachi & \cite{hd64180} \\
 \hline
 Intel & \cite{intelquick} \\
+\hline
+MOS & \cite{ieee_computer_mos6502} \\
 \hline
 Motorola & \cite{motorolamanual} \\
 \hline
@@ -367,6 +369,11 @@ ISBN 978-1-4419-0876-6
 Bus: Page 7, Address: Page 40-46, Data \& Instructions: Page 162-171, Year of Introduction: Page 209.
 Hitachi Limited, 1989.
 
+\bibitem{ieee_computer_mos6502}
+\textit{MOS 6502 The Second of a Low Cost High Performance Microprocessor Family}.
+IEEE Computer, Volume 8, Number 9, Page 38-39, September 1975.
+\href{https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=\&arnumber=1649550\&isnumber=34590}{ieeexplore.ieee.org/\ldots}
+
 \bibitem{intelquick}
 \textit{Intel Microprocessor Quick Reference Guide - Year}.
 Intel Corporation, last modified: Tue, 12 Feb 2013 23:56:59 GMT.
@@ -388,7 +395,7 @@ Intel Corporation, 1986.
 
 \bibitem{intel8080users}
 \textit{Intel Intel 8080 Microcomputer Systems Users's Manual}.
-CHAPTER 2 THE 8080 CENTRAL PROCESSOR UNIT, p.15-34.
+CHAPTER 2 THE 8080 CENTRAL PROCESSOR UNIT: Page 15-34.
 Intel Corporation, September 1975.
 
 \bibitem{intel8085}
@@ -405,6 +412,11 @@ Intel Corporation, September 1990.
 \textit{Intel 8088 8-BIT HMOS MICROPROCESSOR 8088/8088-2}.
 Data: Page 1, Address \& Bus: Page 2, Instructions: Page 26.
 Intel Corporation, August 1990.
+
+\bibitem{mos6500}
+\textit{MCS6500 MICROPROCESSORS}.
+Data \& Address: Page 1, Instructions: Page 6, Bus: Page 9.
+MOS Technology Incorporated, May 1976.
 
 \bibitem{mc6800}
 \textit{MC6800 MOS MICROPROCESSOR}.
