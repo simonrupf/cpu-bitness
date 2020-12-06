@@ -60,13 +60,6 @@
 \usepackage{hyperref} % For hyperlinks in the PDF
 
 \usepackage{tablefootnote} % For using footnotes in tables
-\makeatletter
-\newcommand{\spewfootnotes}{%
-\tfn@tablefootnoteprintout%
-\global\let\tfn@tablefootnoteprintout\relax%
-\gdef\tfn@fnt{0}%
-}
-\makeatother
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
@@ -87,7 +80,7 @@
 \noindent When discussing properties of a computers processing power, one particular
 property often used to classify a system is it's central processing unit's (CPU) bitness.
 A CPU is said to be, for example, of the 8-Bit type and therefore compared to other
-systems sporting CPUs of the same class. When looking at such a CPU more in-depth the
+systems sporting CPUs of the same class. When looking closer at such a CPU, the
 situation is, of course, more complex. This article tries to collect those details over
 a broad range of CPUs, allowing for a more nuanced comparison of these CPUs. It also
 attempts to highlight the somewhat arbitrary nature of these CPU Bitness categorizations.
@@ -108,6 +101,83 @@ attempts to highlight the somewhat arbitrary nature of these CPU Bitness categor
 \section{Introduction}
 
 \lettrine[nindent=0em,lines=3]{L} orem ipsum dolor sit amet, consectetur adipiscing elit.
+
+%------------------------------------------------
+
+\begin{table*}
+\centering % Center table
+\begin{tabular}{lrrrrrl}
+&&\multicolumn{4}{c}{Width in Bits} \\
+\cmidrule(r){3-6}
+CPU & Year & Instructions & Data & Address & Bus & Used in \\
+\toprule
+AGC\tablefootnote{CPU isn't implemented as an integrated circuit, it uses words of 15
+bits with a 1 bit parity, instructions are one word, when the instruction EXTEND is
+used, the next instruction is decoded using a different code set, hence these extended
+instructions are 2 words long instead of one, the only double precision fractional
+numbers are supported as 2 word data type, all other data are 1 word, erasable memory
+addresses need 8 bits, fixed memory addresses require 16} \cite{agc} & 1961 & 15/30 & 15/30 & 8/16 & N/A & Apollo Spacecraft \\
+\hline
+Intel 4004 & 1971 &  &  &  &  &  \\
+\hline
+Intel 8008\tablefootnote{bus is used bi-directional for both address selection and data
+transfers} \cite{intel8008} & 1972 & 8/16/22 & 8 & 14 & 8 & MCS-8, Mark-8 \\
+\hline
+Intel 8080\tablefootnote{separate address and data bus} \cite{intel8080} & 1974 & 8/16/24 & 8 & 16 & 24 & MITS Altair 8800 \\
+\hline
+Motorola 6800 \cite{mc6800} & 1974 & 8/16/24 & 8 & 16 & 24 & Sphere \\
+\hline
+MOS 6502\tablefootnote{designed to be an improved and low-cost evolution on the Motorola
+6800, MOS 6501 was even pin compatible, but the instruction set that is incompatible to
+the 6800} \cite{mos6500} & 1975 & 8/16/24 & 8 & 16 & 24 & Apple II \\
+\hline
+Intel 8085\tablefootnote{lower 8 bits are used bi-directionally for data transfer, same
+instruction set as the 8080} \cite{intel8085} & 1976 & 8/16/24 & 8 & 16 & 16 & TRS-80 Model 100 \\
+\hline
+Zilog Z80\tablefootnote{designed to be binary compatible with the Intel 8080, but
+offering additional instructions} \cite{z8400} & 1976 & 8/16/24/32 & 8/16 & 16 & 24 & Sinclair ZX80 \\
+\hline
+Intel 8086\tablefootnote{lower 16 bits are used bi-directionally for data transfer,
+highest 4 bits are used for signals and segment selection} \cite{intel8086} & 1978 & 8/16/24/32 & 8/16 & 20 & 20 & Compaq Deskpro \\
+\hline
+Intel 8088\tablefootnote{data is fetched 8 bits at a time, but internally stored in 16
+bit registers, lowest 8 bits are used bi-directionally for data transfer, highest 4
+bits are used for signals and segment selection} \cite{intel8088} & 1979 & 8/16/24/32 & 8/16 & 20 & 20 & IBM PC 5150 \\
+\hline
+Motorola 6809 \cite{mc6809} & 1979 & 8/16/24/32 & 8/16 & 16 & 24 & TRS-80 Color Computer \\
+\hline
+MOS 6510\tablefootnote{differs in pin out to the MOS 6502, adding 8 lanes for general
+purpose I/O to the bus, only used in the Commodore 64 which got introduced in 1982} \cite{mos6510} & 1982 & 8/16/24 & 8 & 16 & 32 & Commodore 64 \\
+\hline
+Hitachi 64180\tablefootnote{designed to be binary compatible with the Zilog Z80, offers
+12 additional instructions, among them multiplication, option to address 512 KiB (19
+address lines) or 1 MiB (20 address lines) of memory, got licensed to Zilog which brands
+it Z180} \cite{hd64180} & 1985 & 8/16/24/32 & 8/16 & 20 & 28 & Victor HC-90 \\
+\end{tabular}
+\caption{CPU Bitness}
+\label{tab:bitness}
+\end{table*}
+
+\begin{table}
+\centering % Center table
+\begin{tabular}{ll}
+Vendor & Reference \\
+\toprule
+AGC & \cite{agc} \\
+\hline
+Hitachi & \cite{hd64180} \\
+\hline
+Intel & \cite{intelquick} \\
+\hline
+MOS & \cite{ieee_computer_mos6502} \\
+\hline
+Motorola & \cite{motorolamanual} \\
+\hline
+Zilog & \cite{z80dev} \\
+\end{tabular}
+\caption{Introduction year reference}
+\label{tab:introduction}
+\end{table}
 
 %------------------------------------------------
 
@@ -168,83 +238,9 @@ data and addresses were considered.
 
 \section{Results}
 
-To avoid repetition, the references on the years of introduction of the CPUs got collected in Table \ref{tab:introduction}. The main Table \ref{tab:bitness} collects information on the bit width of key aspects of the CPUs.
-
-\begin{table*}[h]
-\centering % Center table
-\begin{tabular}{lrrrrrl}
-&&\multicolumn{4}{c}{Width in Bits} \\
-\cmidrule(r){3-6}
-CPU & Year & Instructions & Data & Address & Bus & Used in \\
-\toprule
-AGC\tablefootnote{CPU isn't implemented as an integrated circuit, it uses words of 15
-bits with a 1 bit parity, instructions are one word, when the instruction EXTEND is
-used, the next instruction is decoded using a different code set, hence these extended
-instructions are 2 words long instead of one, the only double precision fractional
-numbers are supported as 2 word data type, all other data are 1 word, erasable memory
-addresses need 8 bits, fixed memory addresses require 16} \cite{agc} & 1961 & 15/30 & 15/30 & 8/16 & N/A & Apollo Spacecraft \\
-\hline
-Intel 4004 & 1971 &  &  &  &  &  \\
-\hline
-Intel 8008\tablefootnote{bus is used bi-directional for both address selection and data
-transfers} \cite{intel8008} & 1972 & 8/16/22 & 8 & 14 & 8 & MCS-8, Mark-8 \\
-\hline
-Intel 8080\tablefootnote{separate address and data bus} \cite{intel8080} & 1974 & 8/16/24 & 8 & 16 & 24 & MITS Altair 8800 \\
-\hline
-Motorola 6800 \cite{mc6800} & 1974 & 8/16/24 & 8 & 16 & 24 & Sphere \\
-\hline
-MOS 6502\tablefootnote{designed to be an improved and low-cost evolution on the Motorola
-6800, MOS 6501 was even pin compatible, but the instruction set that is incompatible to
-the 6800} \cite{mos6500} & 1975 & 8/16/24 & 8 & 16 & 24 & Apple II \\
-\hline
-Intel 8085\tablefootnote{lower 8 bits are used bi-directionally for data transfer, same
-instruction set as the 8080} \cite{intel8085} & 1976 & 8/16/24 & 8 & 16 & 16 & TRS-80 Model 100 \\
-\hline
-Zilog Z80\tablefootnote{designed to be binary compatible with the Intel 8080, but
-offering additional instructions} \cite{z8400} & 1976 & 8/16/24/32 & 8/16 & 16 & 24 & Sinclair ZX80 \\
-\hline
-Intel 8086\tablefootnote{lower 16 bits are used bi-directionally for data transfer,
-highest 4 bits are used for signals and segment selection} \cite{intel8086} & 1978 & 8/16/24/32 & 8/16 & 20 & 20 & Compaq Deskpro \\
-\hline
-Intel 8088\tablefootnote{data is fetched 8 bits at a time, but internally stored in 16
-bit registers, lowest 8 bits are used bi-directionally for data transfer, highest 4
-bits are used for signals and segment selection} \cite{intel8088} & 1979 & 8/16/24/32 & 8/16 & 20 & 20 & IBM PC 5150 \\
-\hline
-Motorola 6809 \cite{mc6809} & 1979 & 8/16/24/32 & 8/16 & 16 & 24 & TRS-80 Color Computer \\
-\hline
-MOS 6510\tablefootnote{differs in pin out to the MOS 6502, adding 8 lanes for general
-purpose I/O to the bus, only used in the Commodore 64 which got introduced in 1982} \cite{mos6510} & 1982 & 8/16/24 & 8 & 16 & 32 & Commodore 64 \\
-\hline
-Hitachi 64180\tablefootnote{designed to be binary compatible with the Zilog Z80, offers
-12 additional instructions, among them multiplication, option to address 512 KiB (19
-address lines) or 1 MiB (20 address lines) of memory, got licensed to Zilog which brands
-it Z180} \cite{hd64180} & 1985 & 8/16/24/32 & 8/16 & 20 & 28 & Victor HC-90 \\
-\end{tabular}
-\caption{CPU Bitness}
-\label{tab:bitness}
-\end{table*}
-\spewfootnotes
-
-\begin{table}
-\centering % Center table
-\begin{tabular}{ll}
-Vendor & Reference \\
-\toprule
-AGC & \cite{agc} \\
-\hline
-Hitachi & \cite{hd64180} \\
-\hline
-Intel & \cite{intelquick} \\
-\hline
-MOS & \cite{ieee_computer_mos6502} \\
-\hline
-Motorola & \cite{motorolamanual} \\
-\hline
-Zilog & \cite{z80dev} \\
-\end{tabular}
-\caption{Introduction year reference}
-\label{tab:introduction}
-\end{table}
+To avoid repetition, the references on the years of introduction of the CPUs got
+collected in Table \ref{tab:introduction}. The main Table \ref{tab:bitness} collects
+information on the bit width of key aspects of the CPUs.
 
 %------------------------------------------------
 
