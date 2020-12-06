@@ -340,7 +340,39 @@ On the topic of "CPU Bitness", note that the title in the 8088 datasheet calls i
 MICROPROCESSOR"\cite{intel8086}. The first IBM Personal Computer, model 5150, choose
 the Intel 8088 rather then the 8086, but is usually categorized as 16 bit.
 
-\subsection{Motorola 6800 \& MOS 6501/6502}
+\subsection{Motorola 6800 \& MOS 6500}
+
+The Motorola 6800 did support 72 instructions and was designed to be easily adapted by
+customers for a wide range of applications from industrial to aerospace and automotive
+use. One of the engineers, Chuck Peddle, would accompany salespeople on customer visits
+and witnessed these being put off by the high cost of the processor, which was initially
+sold for USD 360. He and other engineers began working on a new design with less
+supported instructions, that would result in a simpler and cheaper to manufacture,
+although less capable, chip.
+
+In 1974, after Peddle had received a letter from Motorola management, ordering him to
+stop working on his improvements, Chuck Peddle, Bill Mensch, Rod Orgill, Harry Bawcom,
+Ray Hirt, Terry Holdt and Wil Mathys, switched to MOS Technology. At MOS they concluded
+their work, which resulted in the MOS 6500 family of CPUs that offered 56 instructions.
+While the differing instruction set made it incompatible to the Motorola 6800, it did
+use a compatible pin layout, so that the 6500 chips could reuse many of the Motorola 6800
+support chips and even could be dropped into existing board designs for the 6800. And it
+sold for as low as USD 5, in bulk purchases.
+
+Motorola did sue MOS Technology in 1975 for patent infringement and misappropriation of
+trade secrets. In 1976 MOS agreed to stop producing the 6501 chip, payed Motorola USD
+200,000 and returned confidential Motorola documents. By that time Motorola had lowered
+the price of the 6800 to USD 35.
+
+The MOS 6510 is notable to having introduced dedicated pins for general purpose I/O on
+the IC, although it only got used in the Commodore 64. Without such port-mapped I/O, the
+address and data lanes have to serve double duty for memory-mapped I/O. Independtly of
+these is direct memory access (DMA), where I/O devices directly write and read from
+memory, independet of the CPU. While DMA frees CPU cycles, it introduces complexity to a
+system's design, as multiple devices have to access a shared bus, without interfering
+with each other. Port-mapped I/O does allow a CPU more precise control over I/O signals,
+which is important in real time computing or for signals that require precise timing,
+without having to intruce dedicated I/O handling devices to the design.
 
 \subsection{Texas Instruments TMS9900}
 
