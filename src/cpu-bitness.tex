@@ -44,7 +44,7 @@
 
 \usepackage{titlesec} % Allows customization of titles
 \renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
-\renewcommand\thesubsection{\roman{subsection}} % roman numerals for subsections
+\renewcommand\thesubsection{\roman{subsection}} % Roman numerals for subsections
 \titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
 \titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
 
@@ -183,13 +183,13 @@ Zilog & \cite{z80dev} \\
 
 \section{Methods}
 
-As mutch as possible, the bit widths were looked up in datasheets or product
+As much as possible, the bit widths were looked up in data sheets or product
 specifications, as they present the CPUs features in a compact manner. As some CPUs have
-been manufactored over long periods of time and later revisions feature improved designs,
+been manufactured over long periods of time and later revisions feature improved designs,
 this article tries to source the numbers from sheets published as early as possible in
 the products life cycle.
 
-Sourcing early information on the Zilog Z80 CPU prooved to be a particular challenge, as
+Sourcing early information on the Zilog Z80 CPU proved to be a particular challenge, as
 some revisions of this chip are still produced by the same company at the time this
 article is written. This design has been in production since 1976 and a lot of material
 has been published for it over the years.
@@ -209,7 +209,7 @@ As described first by John Von Neumann \cite{edvac}, instructions and data for t
 can both be stored in a single storage. In order to address both using the same
 mechanism, these need be stored in same increments. The instruction width as presented
 in this article records the different lengths possible for an instruction, which can
-consist of an instruction code and optionally addtional parameters representing data to
+consist of an instruction code and optionally additional parameters representing data to
 operate on and/or an address to a memory location.
 
 \subsection{Data width}
@@ -260,7 +260,7 @@ be addressed within the width of the data. For example, a CPU operating on 8-bit
 will want to address more then $2^8 = 256$ addresses.
 \end{enumerate}
 
-The secions below detail some CPU models that took particularly noteworthy trade-offs.
+The sections below detail some CPU models that took particularly noteworthy trade-offs.
 
 \subsection{Apollo Guidance Computer}
 
@@ -273,7 +273,7 @@ use different banking and address widths. The erasable memory servers both for w
 now be IC-internal CPU registers, as well as for storing data or in flight updated
 programs. The two types of storage are not mapped into a single address space and
 different instruction are used to access data or instructions in each. Instructions can
-directly be executed from both types of storage and special instractions are used to
+directly be executed from both types of storage and special instructions are used to
 transfer control between the two. Both types of storage can hold data and instructions,
 so it is still a Von Neumann architecture \cite{edvac}, even though the system doesn't
 make use of a unified address space as many later designs do, were RAM and ROM get mapped
@@ -289,7 +289,7 @@ software differs from the physical amount of bits needed to represent it. And 8 
 are clearly incorrect or at least misleading to represent both bit widths. To avoid
 confusion the term word is used when referring to a 15 bit piece of data. Considering
 that modern ECC memory modules do not include memory used for parity information in their
-capacity listings, this article choses to list this device as a 15 bit architecture.
+capacity listings, this article chooses to list this device as a 15 bit architecture.
 
 It is noteworthy that while the data widths are larger then subsequent integrated circuit
 CPU designs, the address width for both memory types is smaller then the data width.
@@ -314,14 +314,14 @@ support multiplication in their instruction set. \cite{softwaresolutions}
 
 While these CPUs already support some instructions that operate on 16 bits of data, they
 are not regarded to be 16 bit designs, because their both their data bus and
-instruction set are clearly centered around 8 bits of data.
+instruction set are clearly centred around 8 bits of data.
 
 \subsection{Intel 8086 \& 8088}
 
 The Intel 8088 was released a year after the Intel 8086. It offered the same instruction
 set, but reads and stores data 8 bits at a time from or into memory, where as the 8086
 uses a 16 bit data bus. The full bus of the 8088 is 20 bits wide, using the lower 16 bits
-to select addresses in memory. In order to access more then 64kB, it uses memory
+to select addresses in memory. In order to access more then 64 KiB, it uses memory
 segmentation. The segments are selected by the uppermost 4 bits on the bus.
 
 This lets it address the same amount of memory as the 8086. The downside is that every
@@ -333,9 +333,9 @@ lanes need to connect to every memory chip, while the remaining 12 bits are used
 select the active chip to read from or write to.
 
 Hence it trades clock cycles for reduced bus complexity and therefore cheaper circuit
-board manufactoring.
+board manufacturing.
 
-On the topic of "CPU Bitness", note that the title in the 8088 datasheet calls it an
+On the topic of "CPU Bitness", note that the title in the 8088 data sheet calls it an
 "8-BIT HMOS MICROPROCESSOR"\cite{intel8088}, while the 8086 is titled a "16-BIT HMOS
 MICROPROCESSOR"\cite{intel8086}. The first IBM Personal Computer, model 5150, choose
 the Intel 8088 rather then the 8086, but is usually categorized as 16 bit.
@@ -360,19 +360,19 @@ support chips and even could be dropped into existing board designs for the 6800
 sold for as low as USD 5, in bulk purchases.
 
 Motorola did sue MOS Technology in 1975 for patent infringement and misappropriation of
-trade secrets. In 1976 MOS agreed to stop producing the 6501 chip, payed Motorola USD
+trade secrets. In 1976 MOS agreed to stop producing the 6501 chip, paid Motorola USD
 200,000 and returned confidential Motorola documents. By that time Motorola had lowered
 the price of the 6800 to USD 35.
 
 The MOS 6510 is notable to having introduced dedicated pins for general purpose I/O on
 the IC, although it only got used in the Commodore 64. Without such port-mapped I/O, the
-address and data lanes have to serve double duty for memory-mapped I/O. Independtly of
+address and data lanes have to serve double duty for memory-mapped I/O. Independently of
 these is direct memory access (DMA), where I/O devices directly write and read from
-memory, independet of the CPU. While DMA frees CPU cycles, it introduces complexity to a
+memory, independent of the CPU. While DMA frees CPU cycles, it introduces complexity to a
 system's design, as multiple devices have to access a shared bus, without interfering
 with each other. Port-mapped I/O does allow a CPU more precise control over I/O signals,
 which is important in real time computing or for signals that require precise timing,
-without having to intruce dedicated I/O handling devices to the design.
+without having to introduce dedicated I/O handling devices to the design.
 
 \subsection{Texas Instruments TMS9900}
 
