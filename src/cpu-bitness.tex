@@ -118,7 +118,8 @@ instructions are 2 words long instead of one, the only double precision fraction
 numbers are supported as 2 word data type, all other data are 1 word, erasable memory
 addresses need 8 bits, fixed memory addresses require 16} \cite{agc} & 1961 & 15/30 & 15/30 & 8/16 & N/A & Apollo Spacecraft \\
 \hline
-Intel 4004 & 1971 &  &  &  &  &  \\
+Intel 4004\tablefootnote{bus has one pin to select ROM and 4 pins to select the RAM bank,
+4 pins are used bi-directional for both address selection and data transfers} \cite{intel4004} & 1971 & 8/16 & 4 & 12 & 9 & Busicom 141-PF \\
 \hline
 Intel 8008\tablefootnote{bus is used bi-directional for both address selection and data
 transfers} \cite{intel8008} & 1972 & 8/16/22 & 8 & 14 & 8 & MCS-8, Mark-8 \\
@@ -411,6 +412,11 @@ Intel Corporation, last modified: Tue, 12 Feb 2013 23:56:59 GMT.
 \bibitem{intelchips}
 \textit{Intel Chips timeline}.
 Intel Corporation, 2012.
+
+\bibitem{intel4004}
+\textit{Intel 4004 SINGLE CHIP 4-BIT P-CHANNEL MICROPROCESSOR}.
+Address \& Bus: Page 2, Instructions \& Data: Page 3.
+Intel Corporation, March 1987.
 
 \bibitem{intel8008}
 \textit{Intel 8008/8008-1 EIGHT-BIT MICROPROCESSOR}.

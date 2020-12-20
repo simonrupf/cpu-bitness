@@ -10,6 +10,7 @@ PDF_ARGS=-sDEVICE=pdfwrite\
 
 # these will be optimized for "screen"
 PDFS=ref/Intel\ Chips\ timeline.pdf\
+     ref/Intel\ 4004.pdf\
      ref/Intel\ 8085.pdf\
      ref/MOS\ 6510.pdf
 
@@ -41,6 +42,7 @@ ref/Hitachi\ HD64180\ Hardware\ Manual\ 4th\ Edition.pdf: ref/originals/HD64180Z
 	rm /tmp/HD64180-?.pdf
 
 ref/Intel\ Chips\ timeline.pdf: ref/originals/Intel\ Chips\ timeline.pdf
+ref/Intel\ 4004.pdf: ref/originals/Intel\ 4004.pdf
 ref/Intel\ 8085.pdf: ref/originals/Intel\ 8085.pdf
 ref/MOS\ 6510.pdf: ref/originals/MOS\ 6510.pdf
 
