@@ -23,7 +23,7 @@ SPECIAL_PDFS=ref/Hitachi\ HD64180\ Hardware\ Manual\ 4th\ Edition.pdf\
 build: src/cpu-bitness.pdf ## Build the PDF document (default).
 
 src/cpu-bitness.pdf: src/cpu-bitness.tex src/.cache/Tectonic
-	docker run -ti --rm -v $(CURDIR)/src:/mnt -e HOME=/mnt -w /mnt -u $(shell id -u):$(shell id -g) vinay0410/tectonic-image tectonic cpu-bitness.tex
+	docker run -t --read-only --rm -v $(CURDIR)/src:/mnt -e HOME=/mnt -w /mnt -u $(shell id -u):$(shell id -g) vinay0410/tectonic-image tectonic cpu-bitness.tex
 
 src/.cache/Tectonic:
 	mkdir -p src/.cache/Tectonic
