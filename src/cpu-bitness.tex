@@ -77,13 +77,9 @@
 \date{\today} % Leave empty to omit a date
 \renewcommand{\maketitlehookd}{%
 \begin{abstract}
-\noindent When discussing properties of a computers processing power, one particular
-property often used to classify a system is it's central processing unit's (CPU) bitness.
-A CPU is said to be, for example, of the 8-Bit type and therefore compared to other
-systems sporting CPUs of the same class. When looking closer at such a CPU, the
-situation is, of course, more complex. This article tries to collect those details over
-a broad range of CPUs, allowing for a more nuanced comparison of these CPUs. It also
-attempts to highlight the somewhat arbitrary nature of these CPU Bitness categorizations.
+\noindent This article collects key properties of different CPU types, from a low level
+programming point of view. At the core of this document, this data is presented in a
+single, concise table, allowing a nuanced comparison of these different CPU families.
 \end{abstract}
 }
 
@@ -100,7 +96,14 @@ attempts to highlight the somewhat arbitrary nature of these CPU Bitness categor
 
 \section{Introduction}
 
-\lettrine[nindent=0em,lines=3]{L} orem ipsum dolor sit amet, consectetur adipiscing elit.
+\lettrine[nindent=0em,lines=3]{W}hen discussing properties of a computers processing
+power, one particular property often used to classify a system is it's central processing
+unit's (CPU) bitness. A CPU is said to be, for example, of the 8-bit type and therefore
+compared to other systems sporting CPUs of the same class. When looking closer at such a
+CPU, the situation is, of course, more complex. This article tries to collect those
+details over a broad range of CPUs, allowing for a more nuanced comparison of these CPUs.
+It also attempts to highlight the somewhat arbitrary nature of these CPU bitness
+categorizations.
 
 %------------------------------------------------
 
@@ -374,8 +377,6 @@ system's design, as multiple devices have to access a shared bus, without interf
 with each other. Port-mapped I/O does allow a CPU more precise control over I/O signals,
 which is important in real time computing or for signals that require precise timing,
 without having to introduce dedicated I/O handling devices to the design.
-
-\subsection{Texas Instruments TMS9900}
 
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
