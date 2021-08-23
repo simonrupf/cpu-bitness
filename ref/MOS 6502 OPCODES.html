@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>6502 OPCODES</title>
+	<meta http-equiv="content-type" content="text/html; charset=windows-1250">
+	<style type="text/css"> <!--
+		table.withborder {
+			border-width: 1px;
+			border-style: solid;
+			border-color: black;
+			border-collapse: collapse;
+		}
+		td.withborder {
+			border-width: 1px;
+			border-style: solid;
+			border-color: black;
+			border-collapse: collapse;
+		}
+		a:link {
+			text-decoration: none;
+			color: #2018A0;
+		}
+		a:visited {
+			text-decoration: none;
+			color: #2018A0;
+		}
+		a:active {
+			text-decoration: none;
+			color: #2018A0;
+		}
+		a:hover {
+			text-decoration: none;
+			color: #4030FF;
+		}
+		sub {
+			font-size: 8pt;
+		}
+		sup {
+			font-size: 8pt;
+		}
+		hr {
+			height: 1px;
+			color: black;
+		}
+		--></style>
+</head>
+
+<body bgcolor="#DFDFDF">
+<span style="font-size: 150%"><b>6502 instruction set</b></span>
+<br><br>
+<table cellspacing="0" cellpadding="0" class="withborder" bgcolor="#bfbfbf" width="1200">
+	<tr style="font-family: monospace; font-size: 8pt" align="center" bgcolor="#9f9f9f"><td class="withborder">&nbsp;</td><td class="withborder" style="width: 7em"><b>&nbsp;x0&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;x1&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;x2&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;x3&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;x4&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;x5&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;x6&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;x7&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;x8&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;x9&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;xA&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;xB&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;xC&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;xD&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;xE&nbsp;</b></td><td class="withborder" style="width: 7em"><b>&nbsp;xF&nbsp;</b></td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;0x&nbsp;</b></td><td class="withborder" bgcolor="#ff99cc">BRK<br>2 7<br>---I--</td><td class="withborder" bgcolor="#ffff99">ORA (a8,X)<br>2 6<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">ORA a8<br>2 3<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">ASL a8<br>2 5<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">PHP<br>1 3<br>------</td><td class="withborder" bgcolor="#ffff99">ORA #d8<br>2 2<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">ASL A<br>1 2<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">ORA a16<br>3 4<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">ASL a16<br>3 6<br>NZC---</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;1x&nbsp;</b></td><td class="withborder" bgcolor="#ffcc99">BPL r8<br>2 3+/2<br>------</td><td class="withborder" bgcolor="#ffff99">ORA (a8),Y<br>2 5+<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">ORA a8,X<br>2 4<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">ASL a8,X<br>2 6<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">CLC<br>1 2<br>--C---</td><td class="withborder" bgcolor="#ffff99">ORA a16,Y<br>3 4+<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">ORA a16,X<br>3 4+<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">ASL a16,X<br>3 7<br>NZC---</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;2x&nbsp;</b></td><td class="withborder" bgcolor="#ffcc99">JSR a16<br>3 6<br>------</td><td class="withborder" bgcolor="#ffff99">AND (a8,X)<br>2 6<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccffcc">BIT a8<br>2 3<br>NZ---V</td><td class="withborder" bgcolor="#ffff99">AND a8<br>2 3<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">ROL a8<br>2 5<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">PLP<br>1 4<br>NZCIDV</td><td class="withborder" bgcolor="#ffff99">AND #d8<br>2 2<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">ROL A<br>1 2<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccffcc"> BIT a16<br>3 4<br>NZ---V</td><td class="withborder" bgcolor="#ffff99">AND a16<br>3 4<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">ROL a16<br>3 6<br>NZC---</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;3x&nbsp;</b></td><td class="withborder" bgcolor="#ffcc99">BMI r8<br>2 3+/2<br>------</td><td class="withborder" bgcolor="#ffff99">AND (a8),Y<br>2 5+<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">AND a8,X<br>2 4<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">ROL a8,X<br>2 6<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">SEC<br>1 2<br>--C---</td><td class="withborder" bgcolor="#ffff99">AND a16,Y<br>3 4+<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">AND a16,X<br>3 4+<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">ROL a16,X<br>3 7<br>NZC---</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;4x&nbsp;</b></td><td class="withborder" bgcolor="#ff99cc">RTI<br>1 6<br>NZCIDV</td><td class="withborder" bgcolor="#ffff99">EOR (a8,X)<br>2 6<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">EOR a8<br>2 3<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">LSR a8<br>2 5<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">PHA<br>1 3<br>------</td><td class="withborder" bgcolor="#ffff99">EOR #d8<br>2 2<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">LSR A<br>1 2<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffcc99">JMP a16<br>3 3<br>------</td><td class="withborder" bgcolor="#ffff99">EOR a16<br>3 4<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">LSR a16<br>3 6<br>NZC---</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;5x&nbsp;</b></td><td class="withborder" bgcolor="#ffcc99">BVC r8<br>2 3+/2<br>------</td><td class="withborder" bgcolor="#ffff99">EOR (a8),Y<br>2 5+<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">EOR a8,X<br>2 4<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">LSR a8,X<br>2 6<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ff99cc">CLI<br>1 2<br>---I--</td><td class="withborder" bgcolor="#ffff99">EOR a16,Y<br>3 4+<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">EOR a16,X<br>3 4+<br>NZ----</td><td class="withborder" bgcolor="#ccffcc">LSR a16,X<br>3 7<br>NZC---</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;6x&nbsp;</b></td><td class="withborder" bgcolor="#ffcc99">RTS<br>1 6<br>------</td><td class="withborder" bgcolor="#ffff99">ADC (a8,X)<br>2 6<br>NZC--V</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">ADC a8<br>2 3<br>NZC--V</td><td class="withborder" bgcolor="#ccffcc">ROR a8<br>2 5<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">PLA<br>1 4<br>NZ----</td><td class="withborder" bgcolor="#ffff99">ADC #d8<br>2 2<br>NZC--V</td><td class="withborder" bgcolor="#ccffcc">ROR A<br>1 2<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffcc99">JMP (a16)<br>3 5<br>------</td><td class="withborder" bgcolor="#ffff99">ADC a16<br>3 4<br>NZC--V</td><td class="withborder" bgcolor="#ccffcc">ROR a16<br>3 6<br>NZC---</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;7x&nbsp;</b></td><td class="withborder" bgcolor="#ffcc99">BVS r8<br>2 3+/2<br>------</td><td class="withborder" bgcolor="#ffff99">ADC (a8),Y<br>2 5+<br>NZC--V</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">ADC a8,X<br>2 4<br>NZC--V</td><td class="withborder" bgcolor="#ccffcc">ROR a8,X<br>2 6<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ff99cc">SEI<br>1 2<br>---I--</td><td class="withborder" bgcolor="#ffff99">ADC a16,Y<br>3 4+<br>NZC--V</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">ADC a16,X<br>3 4+<br>NZC--V</td><td class="withborder" bgcolor="#ccffcc">ROR a16,X<br>3 7<br>NZC---</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;8x&nbsp;</b></td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">STA (a8,X)<br>2 6<br>------</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">STY a8<br>2 3<br>------</td><td class="withborder" bgcolor="#ccccff">STA a8<br>2 3<br>------</td><td class="withborder" bgcolor="#ccccff">STX a8<br>2 3<br>------</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">DEY<br>1 2<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">TXA<br>1 2<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">STY a16<br>3 4<br>------</td><td class="withborder" bgcolor="#ccccff">STA a16<br>3 4<br>------</td><td class="withborder" bgcolor="#ccccff">STX a16<br>3 4<br>------</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;9x&nbsp;</b></td><td class="withborder" bgcolor="#ffcc99">BCC r8<br>2 3+/2<br>------</td><td class="withborder" bgcolor="#ccccff">STA (a8),Y<br>2 6<br>------</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">STY a8,X<br>2 4<br>------</td><td class="withborder" bgcolor="#ccccff">STA a8,X<br>2 4<br>------</td><td class="withborder" bgcolor="#ccccff">STX a8,Y<br>2 4<br>------</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">TYA<br>1 2<br>NZ----</td><td class="withborder" bgcolor="#ccccff">STA a16,Y<br>3 5<br>------</td><td class="withborder" bgcolor="#ccccff">TXS<br>1 2<br>------</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">STA a16,X<br>3 5<br>------</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;Ax&nbsp;</b></td><td class="withborder" bgcolor="#ccccff">LDY #d8<br>2 2<br>NZ----</td><td class="withborder" bgcolor="#ccccff">LDA (a8,X)<br>2 6<br>NZ----</td><td class="withborder" bgcolor="#ccccff">LDX #d8<br>2 2<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">LDY a8<br>2 3<br>NZ----</td><td class="withborder" bgcolor="#ccccff">LDA a8<br>2 3<br>NZ----</td><td class="withborder" bgcolor="#ccccff">LDX a8<br>2 3<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">TAY<br>1 2<br>NZ----</td><td class="withborder" bgcolor="#ccccff">LDA #d8<br>2 2<br>NZ----</td><td class="withborder" bgcolor="#ccccff">TAX<br>1 2<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">LDY a16<br>3 4<br>NZ----</td><td class="withborder" bgcolor="#ccccff">LDA a16<br>3 4<br>NZ----</td><td class="withborder" bgcolor="#ccccff">LDX a16<br>3 4<br>NZ----</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;Bx&nbsp;</b></td><td class="withborder" bgcolor="#ffcc99">BCS r8<br>2 3+/2<br>------</td><td class="withborder" bgcolor="#ccccff">LDA (a8),Y<br>2 5+<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">LDY a8,X<br>2 4<br>NZ----</td><td class="withborder" bgcolor="#ccccff">LDA a8,X<br>2 4<br>NZ----</td><td class="withborder" bgcolor="#ccccff">LDX a8,Y<br>2 4<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">CLV<br>1 2<br>-----V</td><td class="withborder" bgcolor="#ccccff">LDA a16,Y<br>3 4+<br>NZ----</td><td class="withborder" bgcolor="#ccccff">TSX<br>1 2<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ccccff">LDY a16,X<br>3 4+<br>NZ----</td><td class="withborder" bgcolor="#ccccff">LDA a16,X<br>3 4+<br>NZ----</td><td class="withborder" bgcolor="#ccccff">LDX a16,Y<br>3 4+<br>NZ----</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;Cx&nbsp;</b></td><td class="withborder" bgcolor="#ffff99">CPY #d8<br>2 2<br>NZC---</td><td class="withborder" bgcolor="#ffff99">CMP (a8,X)<br>2 6<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">CPY a8<br>2 3<br>NZC---</td><td class="withborder" bgcolor="#ffff99">CMP a8<br>2 3<br>NZC---</td><td class="withborder" bgcolor="#ffff99">DEC a8<br>2 5<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">INY<br>1 2<br>NZ----</td><td class="withborder" bgcolor="#ffff99">CMP #d8<br>2 2<br>NZC---</td><td class="withborder" bgcolor="#ffff99">DEX<br>1 2<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">CPY a16<br>3 4<br>NZC---</td><td class="withborder" bgcolor="#ffff99">CMP a16<br>3 4<br>NZC---</td><td class="withborder" bgcolor="#ffff99">DEC a16<br>3 6<br>NZ----</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;Dx&nbsp;</b></td><td class="withborder" bgcolor="#ffcc99">BNE r8<br>2 3+/2<br>------</td><td class="withborder" bgcolor="#ffff99">CMP (a8),Y<br>2 5+<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">CMP a8,X<br>2 4<br>NZC---</td><td class="withborder" bgcolor="#ffff99">DEC a8,X<br>2 6<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ff99cc">CLD<br>1 2<br>----D-</td><td class="withborder" bgcolor="#ffff99">CMP a16,Y<br>3 4+<br>NZC---</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">CMP a16,X<br>3 4+<br>NZC---</td><td class="withborder" bgcolor="#ffff99">DEC a16,X<br>3 7<br>NZ----</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;Ex&nbsp;</b></td><td class="withborder" bgcolor="#ffff99">CPX #d8<br>2 2<br>NZC---</td><td class="withborder" bgcolor="#ffff99">SBC (a8,X)<br>2 6<br>NZC--V</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">CPX a8<br>2 3<br>NZC---</td><td class="withborder" bgcolor="#ffff99">SBC a8<br>2 3<br>NZC--V</td><td class="withborder" bgcolor="#ffff99">INC a8<br>2 5<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">INX<br>1 2<br>NZ----</td><td class="withborder" bgcolor="#ffff99">SBC #d8<br>2 2<br>NZC--V</td><td class="withborder" bgcolor="#ff99cc">NOP<br>1 2<br>------</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">CPX a16<br>3 4<br>NZC---</td><td class="withborder" bgcolor="#ffff99">SBC a16<br>3 4<br>NZC--V</td><td class="withborder" bgcolor="#ffff99">INC a16<br>3 6<br>NZ----</td><td class="withborder">&nbsp;</td></tr>
+	<tr style="font-family: monospace; font-size: 8pt" align="center"><td class="withborder" bgcolor="#9f9f9f"><b>&nbsp;Fx&nbsp;</b></td><td class="withborder" bgcolor="#ffcc99">BEQ r8<br>2 3+/2<br>------</td><td class="withborder" bgcolor="#ffff99">SBC (a8),Y<br>2 5+<br>NZC--V</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">SBC a8,X<br>2 4<br>NZC--V</td><td class="withborder" bgcolor="#ffff99">INC a8,X<br>2 6<br>NZ----</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ff99cc">SED<br>1 2<br>----D-</td><td class="withborder" bgcolor="#ffff99">SBC a16,Y<br>3 4+<br>NZC--V</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder">&nbsp;</td><td class="withborder" bgcolor="#ffff99">SBC a16,X<br>3 4+<br>NZC--V</td><td class="withborder" bgcolor="#ffff99">INC a16,X<br>3 7<br>NZ----</td><td class="withborder">&nbsp;</td></tr>
+</table>
+<br><br>
+<table cellspacing="0" cellpadding="0" style="font-family: monospace; font-size: 8pt" width="1200">
+	<tr>
+	<td>
+	<table cellspacing="0" cellpadding="0" style="font-family: monospace; font-size: 8pt">
+		<tr><td bgcolor="#ff99cc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td><td>Misc/control instructions</td></tr>
+		<tr><td bgcolor="#ffcc99">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td><td>Jumps/branches/calls</td></tr>
+		<tr><td bgcolor="#ccccff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td><td>Load/store/transfer instructions</td></tr>
+		<tr><td bgcolor="#ffff99">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td><td>Arithmetic/logical instructions</td></tr>
+		<tr><td bgcolor="#ccffcc">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>&nbsp;&nbsp;</td><td>Shift/rotation instructions</td></tr>
+	</table>
+	</td>
+	<td width="25">&nbsp;</td>
+	<td>
+	<table cellspacing="0" cellpadding="0">
+		<tr style="font-family: monospace; font-size: 8pt" align="center">
+			<td align="right">&nbsp;<br>Length in bytes&nbsp;&rarr;<br>&nbsp;</td>
+			<td>&nbsp;</td>
+			<td class="withborder" style="width: 6em" bgcolor="#ffffff">INS a8<br>2 3<br>NZCIDV</td>
+			<td>&nbsp;</td>
+			<td align="left">&larr;&nbsp;Instruction mnemonic<br>&larr;&nbsp;Duration in cycles<br>&larr;&nbsp;Flags affected</td>
+		</tr>
+	</table>
+	</td>
+	<td width="25">&nbsp;</td>
+	<td width="480">
+	Duration of conditional branches is 2 cycles when branch is not taken, 3 cycles when branch is taken and 4 cycles when branch is taken and crosses 256 byte page boundary. This is indicated with +.<br>
+	Duration of instructions with indexed addressing is in some cases one cycle longer, when while calculating target address 256 byte page boundary is crossed. This is indicated with + after digit.
+	</td>
+	</tr>
+</table>
+</body>
+</html>
