@@ -109,54 +109,54 @@ categorizations.
 
 \begin{table*}
 \centering % Center table
-\begin{tabular}{lrrrrrl}
-&&\multicolumn{4}{c}{Width in Bits} \\
-\cmidrule(r){3-6}
-CPU & Year & Instructions & Data & Address & Bus & Used in \\
+\begin{tabular}{lrrrrrrl}
+&& Count & \multicolumn{4}{c}{Width in Bits} \\
+\cmidrule(r){3-7}
+CPU & Year & \multicolumn{2}{c}{Instructions} & Data & Address & Bus & Used in \\
 \toprule
 AGC\tablefootnote{CPU isn't implemented as an integrated circuit, it uses words of 15
 bits with a 1 bit parity, instructions are one word, when the instruction EXTEND is
 used, the next instruction is decoded using a different code set, hence these extended
 instructions are 2 words long instead of one, the only double precision fractional
 numbers are supported as 2 word data type, all other data are 1 word, erasable memory
-addresses need 8 bits, fixed memory addresses require 16} \cite{agc} & 1961 & 15/30 & 15/30 & 8/16 & N/A & Apollo Spacecraft \\
+addresses need 8 bits, fixed memory addresses require 16} \cite{agc} & 1961 & 34/97\tablefootnote{34 instructions were implemented in the CPU hardware, but most programs were written in an interpreted instruction set of 97 higher-level instructions} & 15/30 & 15/30 & 8/16 & N/A & Apollo Spacecraft \\
 \hline
 Intel 4004\tablefootnote{bus has one pin to select ROM and 4 pins to select the RAM bank,
-4 pins are used bi-directional for both address selection and data transfers} \cite{intel4004} & 1971 & 8/16 & 4 & 12 & 9 & Busicom 141-PF \\
+4 pins are used bi-directional for both address selection and data transfers} \cite{intel4004} & 1971 & 46 & 8/16 & 4 & 12 & 9 & Busicom 141-PF \\
 \hline
 Intel 8008\tablefootnote{bus is used bi-directional for both address selection and data
-transfers} \cite{intel8008} & 1972 & 8/16/22 & 8 & 14 & 8 & MCS-8, Mark-8 \\
+transfers} \cite{intel8008} & 1972 & 48 & 8/16/22 & 8 & 14 & 8 & MCS-8, Mark-8 \\
 \hline
-Intel 8080\tablefootnote{separate address and data bus} \cite{intel8080} & 1974 & 8/16/24 & 8 & 16 & 24 & MITS Altair 8800 \\
+Intel 8080\tablefootnote{separate address and data bus} \cite{intel8080} & 1974 & 244 & 8/16/24 & 8 & 16 & 24 & MITS Altair 8800 \\
 \hline
-Motorola 6800 \cite{mc6800} & 1974 & 8/16/24 & 8 & 16 & 24 & Sphere \\
+Motorola 6800 \cite{mc6800} & 1974 & 72 & 8/16/24 & 8 & 16 & 24 & Sphere \\
 \hline
 MOS 6502\tablefootnote{designed to be an improved and low-cost evolution on the Motorola
 6800, MOS 6501 was even pin compatible, but the instruction set that is incompatible to
-the 6800} \cite{mos6500} & 1975 & 8/16/24 & 8 & 16 & 24 & Apple I \\
+the 6800} \cite{mos6500} & 1975 & 56 & 8/16/24 & 8 & 16 & 24 & Apple I \\
 \hline
 Intel 8085\tablefootnote{lower 8 bits are used bi-directionally for data transfer, same
-instruction set as the 8080} \cite{intel8085} & 1976 & 8/16/24 & 8 & 16 & 16 & TRS-80 Model 100 \\
+instruction set as the 8080} \cite{intel8085} & 1976 & 246 & 8/16/24 & 8 & 16 & 16 & TRS-80 Model 100 \\
 \hline
 Zilog Z80\tablefootnote{designed to be binary compatible with the Intel 8080, but
-offering additional instructions} \cite{z8400} & 1976 & 8/16/24/32 & 8/16 & 16 & 24 & Sinclair ZX80 \\
+offering additional instructions} \cite{z8400} & 1976 & 696 & 8/16/24/32 & 8/16 & 16 & 24 & Sinclair ZX80 \\
 \hline
 Intel 8086\tablefootnote{lower 16 bits are used bi-directionally for data transfer,
-highest 4 bits are used for signals and segment selection} \cite{intel8086} & 1978 & 8/16/24/32 & 8/16 & 20 & 20 & Compaq Deskpro \\
+highest 4 bits are used for signals and segment selection} \cite{intel8086} & 1978 && 8/16/24/32 & 8/16 & 20 & 20 & Compaq Deskpro \\
 \hline
 Intel 8088\tablefootnote{data is fetched 8 bits at a time, but internally stored in 16
 bit registers, lowest 8 bits are used bi-directionally for data transfer, highest 4
-bits are used for signals and segment selection} \cite{intel8088} & 1979 & 8/16/24/32 & 8/16 & 20 & 20 & IBM PC 5150 \\
+bits are used for signals and segment selection} \cite{intel8088} & 1979 && 8/16/24/32 & 8/16 & 20 & 20 & IBM PC 5150 \\
 \hline
-Motorola 6809 \cite{mc6809} & 1979 & 8/16/24/32 & 8/16 & 16 & 24 & TRS-80 Color Computer \\
+Motorola 6809 \cite{mc6809} & 1979 & 72 & 8/16/24/32 & 8/16 & 16 & 24 & TRS-80 CoCo \\
 \hline
 MOS 6510\tablefootnote{differs in pin out to the MOS 6502, adding 8 lanes for general
-purpose I/O to the bus, only used in the Commodore 64 which got introduced in 1982} \cite{mos6510} & 1982 & 8/16/24 & 8 & 16 & 32 & Commodore 64 \\
+purpose I/O to the bus, only used in the Commodore 64 which got introduced in 1982} \cite{mos6510} & 1982 & 56 & 8/16/24 & 8 & 16 & 32 & Commodore 64 \\
 \hline
 Hitachi 64180\tablefootnote{designed to be binary compatible with the Zilog Z80, offers
 12 additional instructions, among them multiplication, option to address 512 KiB (19
 address lines) or 1 MiB (20 address lines) of memory, got licensed to Zilog which brands
-it Z180} \cite{hd64180} & 1985 & 8/16/24/32 & 8/16 & 20 & 28 & Victor HC-90 \\
+it Z180} \cite{hd64180} & 1985 & 708 & 8/16/24/32 & 8/16 & 20 & 28 & Victor HC-90 \\
 \end{tabular}
 \caption{CPU Bitness}
 \label{tab:bitness}
@@ -201,11 +201,38 @@ has been published for it over the years.
 After comparing several CPU models, the following properties were selected for comparison:
 
 \begin{itemize}
+\item Instruction count
 \item Instruction width
 \item Data width
 \item Address width
 \item Bus width
 \end{itemize}
+
+\subsection{Instruction count}
+
+While proof-of-concept CPU architectures exist that work with a single, universal
+instruction, all CPUs used for practical applications will provide a number of different
+instructions. These will usually include general purpuse instructions to add and
+subtract numbers stored in CPU-internal memory (called registers), store and load data
+from CPU-external memory or doing other input and output operations (I/O), conditional
+branching and to jump to a different location. Often additional mathematical operations
+are supported or operations that combine conditionals and jumps. CPUs tend to be labeled
+as having been designed with more complex or reduced instruction set computing
+(CISC/RISC) in mind. Early CPUs tended to implement less instructions purely due to
+manufacturing constraints. Later CPUs tend to offer a very large instruction set while
+internally working with a much smaller instruction set and using an interpreter to
+convert one set into the other, which may itself be loaded from a re-programmable memory
+device, allowing the CPU to gain new instructions during it's lifetime via an update of
+its firmware.
+
+For the purposes of this document, the instruction count of the earliest data sheet found
+are listed. The counts do include all variant instructions, if they use different binary
+representations, but omits duplicate or undocumented instructions. An example from the
+Intel 8080 are several undocumented instructions that all act as a No-Op that are not
+counted, while the MOV instruction has two arguments for selecting destination and source
+of the move, adding a total of 63 combinations (7 registers plus memory as either source
+or destination, excluding the illegal memory to memory combination, which would require
+two address arguments).
 
 \subsection{Instruction width}
 
