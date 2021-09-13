@@ -119,7 +119,7 @@ bits with a 1 bit parity, instructions are one word, when the instruction EXTEND
 used, the next instruction is decoded using a different code set, hence these extended
 instructions are 2 words long instead of one, the only double precision fractional
 numbers are supported as 2 word data type, all other data are 1 word, erasable memory
-addresses need 8 bits, fixed memory addresses require 16} \cite{agc} & 1961 & 34/97\tablefootnote{34 instructions were implemented in the CPU hardware, but most programs were written in an interpreted instruction set of 97 higher-level instructions} & 15/30 & 15/30 & 8/16 & N/A & Apollo Spacecraft \\
+addresses need 8 bits, fixed memory addresses require 16} \cite{agc} & 1961 & 41\tablefootnote{41 instructions are implemented in the CPU hardware, but most programs are written using 123 different, software interpreted instructions} & 15/30 & 15/30 & 8/16 & N/A & Apollo Spacecraft \\
 \hline
 Intel 4004\tablefootnote{bus has one pin to select ROM and 4 pins to select the RAM bank,
 4 pins are used bi-directional for both address selection and data transfers} \cite{intel4004} & 1971 & 46 & 8/16 & 4 & 12 & 9 & Busicom 141-PF \\
@@ -300,8 +300,8 @@ predates the availability of integrated circuits (IC) and so it's central proces
 got implemented using discrete electronic components. This makes it difficult to discern
 a data or address bus easily, although it does clearly separate two types of memory,
 erasable core memory and fixed core rope storage. Both get addressed independently and
-use different banking and address widths. The erasable memory servers both for what would
-now be IC-internal CPU registers, as well as for storing data or in flight updated
+use different banking and address widths. The erasable memory serves both for what would
+now be IC-internal CPU registers, as well as for storing data or in-flight updated
 programs. The two types of storage are not mapped into a single address space and
 different instruction are used to access data or instructions in each. Instructions can
 directly be executed from both types of storage and special instructions are used to
@@ -314,10 +314,10 @@ It is debatable if this system can be classified as 15 or 16 bit system. Data ca
 stored as 15 bits, or 30 bits, in the case of double precision fractionals. The 16th bit
 of each word serves as parity and in a few cases as an overflow flag, but in most cases
 can't be accessed by the software - the overflow handling requires extra operations and
-so that bit can be indirectly accessed. It is therefore also difficult give an amount of
-data storage in bits, since the amount of data storage capacity that is accessible by the
-software differs from the physical amount of bits needed to represent it. And 8 bit bytes
-are clearly incorrect or at least misleading to represent both bit widths. To avoid
+so that bit can be indirectly accessed. It is therefore also difficult to give an amount
+of data storage in bits, since the amount of data storage capacity that is accessible by
+the software differs from the physical amount of bits needed to represent it. And 8 bit
+bytes are clearly incorrect, or at least misleading, to represent both bit widths. To avoid
 confusion the term word is used when referring to a 15 bit piece of data. Considering
 that modern ECC memory modules do not include memory used for parity information in their
 capacity listings, this article chooses to list this device as a 15 bit architecture.
@@ -331,8 +331,8 @@ address. Since the system uses banking to access both types of storage, this is
 sufficient to store the address within the currently selected bank for both types of
 memory. One of these instructions is the EXTEND instruction. When it is given, the
 following word contains an instruction that gets decoded using a different instruction
-set. This three staged design illustrates how the instruction architecture had evolved
-over time.
+set. This three staged design illustrates how the instruction set architecture of the AGC
+had evolved over time.
 
 \subsection{Intel 8080 \& it's Evolutions}
 
